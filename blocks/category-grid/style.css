@@ -1,0 +1,50 @@
+/**
+ * Category Grid Block - Styles
+ *
+ * Minimal editor styles. Frontend styling to be done separately.
+ */
+
+/* Editor preview styles */
+.sunnytree-category-grid__container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.sunnytree-category-grid__item {
+    display: flex;
+    flex-direction: column;
+}
+
+.sunnytree-category-grid__image-wrapper {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.sunnytree-category-grid__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sunnytree-category-grid__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.sunnytree-category-grid__title {
+    margin: 0;
+    font-size: 1.125rem;
+}
+
+.sunnytree-category-grid__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.sunnytree-category-grid__arrow::after {
+    content: '\2192';
+}

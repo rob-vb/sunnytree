@@ -1,0 +1,90 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "sunnytree/category-grid",
+    "version": "1.0.0",
+    "title": "Category Grid",
+    "category": "sunnytree",
+    "icon": "grid-view",
+    "description": "A six-section grid displaying categories with images, titles, and links.",
+    "keywords": ["category", "grid", "cards", "sunnytree"],
+    "textdomain": "sunnytree",
+
+    "attributes": {
+        "section1ImageId": { "type": "number", "default": 0 },
+        "section1ImageUrl": { "type": "string", "default": "" },
+        "section1ImageAlt": { "type": "string", "default": "" },
+        "section1Title": { "type": "string", "default": "" },
+        "section1LinkUrl": { "type": "string", "default": "" },
+        "section1LinkText": { "type": "string", "default": "" },
+        "section1LinkTarget": { "type": "string", "default": "_self" },
+
+        "section2ImageId": { "type": "number", "default": 0 },
+        "section2ImageUrl": { "type": "string", "default": "" },
+        "section2ImageAlt": { "type": "string", "default": "" },
+        "section2Title": { "type": "string", "default": "" },
+        "section2LinkUrl": { "type": "string", "default": "" },
+        "section2LinkText": { "type": "string", "default": "" },
+        "section2LinkTarget": { "type": "string", "default": "_self" },
+
+        "section3ImageId": { "type": "number", "default": 0 },
+        "section3ImageUrl": { "type": "string", "default": "" },
+        "section3ImageAlt": { "type": "string", "default": "" },
+        "section3Title": { "type": "string", "default": "" },
+        "section3LinkUrl": { "type": "string", "default": "" },
+        "section3LinkText": { "type": "string", "default": "" },
+        "section3LinkTarget": { "type": "string", "default": "_self" },
+
+        "section4ImageId": { "type": "number", "default": 0 },
+        "section4ImageUrl": { "type": "string", "default": "" },
+        "section4ImageAlt": { "type": "string", "default": "" },
+        "section4Title": { "type": "string", "default": "" },
+        "section4LinkUrl": { "type": "string", "default": "" },
+        "section4LinkText": { "type": "string", "default": "" },
+        "section4LinkTarget": { "type": "string", "default": "_self" },
+
+        "section5ImageId": { "type": "number", "default": 0 },
+        "section5ImageUrl": { "type": "string", "default": "" },
+        "section5ImageAlt": { "type": "string", "default": "" },
+        "section5Title": { "type": "string", "default": "" },
+        "section5LinkUrl": { "type": "string", "default": "" },
+        "section5LinkText": { "type": "string", "default": "" },
+        "section5LinkTarget": { "type": "string", "default": "_self" },
+
+        "section6ImageId": { "type": "number", "default": 0 },
+        "section6ImageUrl": { "type": "string", "default": "" },
+        "section6ImageAlt": { "type": "string", "default": "" },
+        "section6Title": { "type": "string", "default": "" },
+        "section6LinkUrl": { "type": "string", "default": "" },
+        "section6LinkText": { "type": "string", "default": "" },
+        "section6LinkTarget": { "type": "string", "default": "_self" }
+    },
+
+    "supports": {
+        "html": false,
+        "anchor": true,
+        "customClassName": true,
+        "className": true,
+        "align": ["wide", "full"],
+        "alignWide": true,
+        "spacing": {
+            "margin": true,
+            "padding": true
+        }
+    },
+
+    "example": {
+        "attributes": {
+            "section1Title": "Olijfboom",
+            "section1LinkText": "bekijk ons aanbod",
+            "section2Title": "Palmboom",
+            "section2LinkText": "bekijk ons aanbod",
+            "section3Title": "Citrusboom",
+            "section3LinkText": "bekijk ons aanbod"
+        }
+    },
+
+    "editorScript": "file:./editor.js",
+    "style": "file:./style.css",
+    "render": "file:./render.php"
+}

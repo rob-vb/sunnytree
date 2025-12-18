@@ -1,0 +1,61 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "sunnytree/sunny-video",
+    "version": "1.0.0",
+    "title": "Sunny Video",
+    "category": "sunnytree",
+    "icon": "video-alt3",
+    "description": "A two-column block with video player and rich content.",
+    "keywords": ["video", "media", "content", "sunnytree"],
+    "textdomain": "sunnytree",
+
+    "attributes": {
+        "videoId": {
+            "type": "number",
+            "default": 0
+        },
+        "videoUrl": {
+            "type": "string",
+            "default": ""
+        },
+        "posterImageId": {
+            "type": "number",
+            "default": 0
+        },
+        "posterImageUrl": {
+            "type": "string",
+            "default": ""
+        },
+        "heading": {
+            "type": "string",
+            "default": ""
+        },
+        "content": {
+            "type": "string",
+            "default": ""
+        },
+        "buttonText": {
+            "type": "string",
+            "default": ""
+        },
+        "buttonUrl": {
+            "type": "string",
+            "default": ""
+        },
+        "buttonTarget": {
+            "type": "string",
+            "default": "_self"
+        }
+    },
+
+    "supports": {
+        "html": false,
+        "anchor": true,
+        "customClassName": true,
+        "align": ["wide", "full"]
+    },
+
+    "editorScript": "file:./editor.js",
+    "render": "file:./render.php"
+}

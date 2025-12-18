@@ -1,0 +1,251 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "sunnytree/sample-block",
+    "version": "1.0.0",
+    "title": "Sample Block",
+    "category": "sunnytree",
+    "icon": "palmtree",
+    "description": "A comprehensive sample block demonstrating all available attributes and supports.",
+    "keywords": ["sample", "example", "reference", "sunnytree"],
+    "textdomain": "sunnytree",
+
+    "attributes": {
+        "title": {
+            "type": "string",
+            "default": ""
+        },
+        "content": {
+            "type": "string",
+            "default": ""
+        },
+        "richContent": {
+            "type": "string",
+            "source": "html",
+            "selector": ".sunnytree-sample-block__rich-content",
+            "default": ""
+        },
+        "showTitle": {
+            "type": "boolean",
+            "default": true
+        },
+        "showContent": {
+            "type": "boolean",
+            "default": true
+        },
+        "columns": {
+            "type": "number",
+            "default": 1
+        },
+        "gap": {
+            "type": "number",
+            "default": 20
+        },
+        "aspectRatio": {
+            "type": "string",
+            "default": "auto"
+        },
+        "mediaId": {
+            "type": "number",
+            "default": 0
+        },
+        "mediaUrl": {
+            "type": "string",
+            "default": ""
+        },
+        "mediaAlt": {
+            "type": "string",
+            "default": ""
+        },
+        "linkUrl": {
+            "type": "string",
+            "default": ""
+        },
+        "linkTarget": {
+            "type": "string",
+            "default": "_self"
+        },
+        "linkRel": {
+            "type": "string",
+            "default": ""
+        },
+        "buttonText": {
+            "type": "string",
+            "default": "Learn More"
+        },
+        "buttonStyle": {
+            "type": "string",
+            "default": "primary",
+            "enum": ["primary", "secondary", "outline", "ghost"]
+        },
+        "selectedItems": {
+            "type": "array",
+            "default": [],
+            "items": {
+                "type": "string"
+            }
+        },
+        "items": {
+            "type": "array",
+            "default": [],
+            "items": {
+                "type": "object"
+            }
+        },
+        "settings": {
+            "type": "object",
+            "default": {
+                "autoplay": false,
+                "speed": 500,
+                "loop": true
+            }
+        },
+        "verticalAlignment": {
+            "type": "string",
+            "default": "top",
+            "enum": ["top", "center", "bottom"]
+        },
+        "horizontalAlignment": {
+            "type": "string",
+            "default": "left",
+            "enum": ["left", "center", "right"]
+        },
+        "iconName": {
+            "type": "string",
+            "default": "star"
+        },
+        "iconSize": {
+            "type": "number",
+            "default": 24
+        },
+        "date": {
+            "type": "string",
+            "default": ""
+        },
+        "customClassName": {
+            "type": "string",
+            "default": ""
+        }
+    },
+
+    "supports": {
+        "html": false,
+        "anchor": true,
+        "customClassName": true,
+        "className": true,
+        "align": ["left", "center", "right", "wide", "full"],
+        "alignWide": true,
+        "ariaLabel": true,
+        "multiple": true,
+        "reusable": true,
+        "lock": true,
+
+        "color": {
+            "background": true,
+            "text": true,
+            "link": true,
+            "gradients": true,
+            "enableContrastChecker": true,
+            "__experimentalDefaultControls": {
+                "background": true,
+                "text": true
+            }
+        },
+
+        "typography": {
+            "fontSize": true,
+            "lineHeight": true,
+            "textAlign": true,
+            "__experimentalFontFamily": true,
+            "__experimentalFontWeight": true,
+            "__experimentalFontStyle": true,
+            "__experimentalTextTransform": true,
+            "__experimentalTextDecoration": true,
+            "__experimentalLetterSpacing": true,
+            "__experimentalWritingMode": true,
+            "__experimentalDefaultControls": {
+                "fontSize": true
+            }
+        },
+
+        "spacing": {
+            "margin": true,
+            "padding": true,
+            "blockGap": true,
+            "__experimentalDefaultControls": {
+                "padding": true,
+                "blockGap": true
+            }
+        },
+
+        "dimensions": {
+            "minHeight": true,
+            "aspectRatio": true
+        },
+
+        "__experimentalBorder": {
+            "color": true,
+            "radius": true,
+            "style": true,
+            "width": true,
+            "__experimentalDefaultControls": {
+                "color": true,
+                "radius": true,
+                "style": true,
+                "width": true
+            }
+        },
+
+        "shadow": true,
+
+        "position": {
+            "sticky": true
+        },
+
+        "interactivity": {
+            "clientNavigation": true
+        },
+
+        "__experimentalLayout": {
+            "allowSwitching": false,
+            "allowInheriting": true,
+            "default": {
+                "type": "constrained"
+            }
+        }
+    },
+
+    "styles": [
+        {
+            "name": "default",
+            "label": "Default",
+            "isDefault": true
+        },
+        {
+            "name": "card",
+            "label": "Card"
+        },
+        {
+            "name": "outlined",
+            "label": "Outlined"
+        },
+        {
+            "name": "filled",
+            "label": "Filled"
+        }
+    ],
+
+    "example": {
+        "attributes": {
+            "title": "Sample Block Title",
+            "content": "This is example content for the block preview.",
+            "showTitle": true,
+            "showContent": true,
+            "buttonText": "Click Here"
+        }
+    },
+
+    "editorScript": "file:./editor.js",
+    "style": "file:./style.css",
+    "render": "file:./render.php"
+}

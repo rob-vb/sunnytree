@@ -1,0 +1,504 @@
+/**
+ * Sample Block Styles
+ *
+ * Comprehensive reference demonstrating all styling patterns.
+ * These styles apply both in the editor and on the frontend.
+ *
+ * @package SunnyTree
+ */
+
+/* =============================================================================
+   BASE STYLES
+   ============================================================================= */
+
+.sunnytree-sample-block {
+    /* CSS Custom Properties (set via PHP/JS) */
+    --columns: 1;
+    --gap: 20px;
+    --aspect-ratio: auto;
+
+    /* Layout */
+    display: block;
+    padding: var(--wp--preset--spacing--40, 1.5rem);
+    border-radius: 8px;
+
+    /* Colors - using theme.json values with fallbacks */
+    background-color: var(--wp--preset--color--background, #ffffff);
+    border: 1px solid var(--wp--preset--color--border, #e5e7eb);
+    color: var(--wp--preset--color--foreground, #1f2937);
+}
+
+.sunnytree-sample-block__inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+    max-width: 100%;
+}
+
+/* =============================================================================
+   MEDIA STYLES
+   ============================================================================= */
+
+.sunnytree-sample-block__media {
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+.sunnytree-sample-block__media-link {
+    display: block;
+    text-decoration: none;
+}
+
+.sunnytree-sample-block__media-link:hover .sunnytree-sample-block__image,
+.sunnytree-sample-block__media-link:focus .sunnytree-sample-block__image {
+    transform: scale(1.02);
+}
+
+.sunnytree-sample-block__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+/* =============================================================================
+   CONTENT STYLES
+   ============================================================================= */
+
+.sunnytree-sample-block__content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex-grow: 1;
+}
+
+/* Icon */
+.sunnytree-sample-block__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--wp--preset--color--primary, #2563eb);
+    flex-shrink: 0;
+}
+
+.sunnytree-sample-block__icon svg {
+    display: block;
+}
+
+/* Title */
+.sunnytree-sample-block__title {
+    margin: 0;
+    font-size: var(--wp--preset--font-size--large, 1.25rem);
+    font-weight: 600;
+    color: var(--wp--preset--color--foreground, #1f2937);
+    line-height: 1.3;
+}
+
+/* Content */
+.sunnytree-sample-block__content {
+    margin: 0;
+    font-size: var(--wp--preset--font-size--medium, 1rem);
+    color: var(--wp--preset--color--muted, #6b7280);
+    line-height: 1.6;
+}
+
+/* Rich Content */
+.sunnytree-sample-block__rich-content {
+    font-size: var(--wp--preset--font-size--medium, 1rem);
+    line-height: 1.6;
+}
+
+.sunnytree-sample-block__rich-content p {
+    margin: 0 0 1em;
+}
+
+.sunnytree-sample-block__rich-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Date */
+.sunnytree-sample-block__date {
+    display: inline-block;
+    font-size: var(--wp--preset--font-size--small, 0.875rem);
+    color: var(--wp--preset--color--muted, #6b7280);
+}
+
+/* =============================================================================
+   BUTTON STYLES
+   ============================================================================= */
+
+.sunnytree-sample-block__button-wrapper {
+    margin-top: 0.5rem;
+}
+
+.sunnytree-sample-block__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    font-size: var(--wp--preset--font-size--small, 0.875rem);
+    font-weight: 500;
+    line-height: 1.4;
+    text-decoration: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Primary Button */
+.sunnytree-sample-block__button--primary {
+    background-color: var(--wp--preset--color--primary, #2563eb);
+    color: #ffffff;
+    border: 2px solid var(--wp--preset--color--primary, #2563eb);
+}
+
+.sunnytree-sample-block__button--primary:hover,
+.sunnytree-sample-block__button--primary:focus {
+    background-color: var(--wp--preset--color--primary-dark, #1d4ed8);
+    border-color: var(--wp--preset--color--primary-dark, #1d4ed8);
+}
+
+/* Secondary Button */
+.sunnytree-sample-block__button--secondary {
+    background-color: var(--wp--preset--color--secondary, #64748b);
+    color: #ffffff;
+    border: 2px solid var(--wp--preset--color--secondary, #64748b);
+}
+
+.sunnytree-sample-block__button--secondary:hover,
+.sunnytree-sample-block__button--secondary:focus {
+    background-color: var(--wp--preset--color--secondary-light, #94a3b8);
+    border-color: var(--wp--preset--color--secondary-light, #94a3b8);
+}
+
+/* Outline Button */
+.sunnytree-sample-block__button--outline {
+    background-color: transparent;
+    color: var(--wp--preset--color--primary, #2563eb);
+    border: 2px solid var(--wp--preset--color--primary, #2563eb);
+}
+
+.sunnytree-sample-block__button--outline:hover,
+.sunnytree-sample-block__button--outline:focus {
+    background-color: var(--wp--preset--color--primary, #2563eb);
+    color: #ffffff;
+}
+
+/* Ghost Button */
+.sunnytree-sample-block__button--ghost {
+    background-color: transparent;
+    color: var(--wp--preset--color--primary, #2563eb);
+    border: 2px solid transparent;
+}
+
+.sunnytree-sample-block__button--ghost:hover,
+.sunnytree-sample-block__button--ghost:focus {
+    background-color: rgba(37, 99, 235, 0.1);
+}
+
+/* =============================================================================
+   TAGS STYLES
+   ============================================================================= */
+
+.sunnytree-sample-block__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.sunnytree-sample-block__tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    font-size: var(--wp--preset--font-size--small, 0.75rem);
+    font-weight: 500;
+    color: var(--wp--preset--color--primary, #2563eb);
+    background-color: rgba(37, 99, 235, 0.1);
+    border-radius: 9999px;
+}
+
+/* =============================================================================
+   ITEMS LIST STYLES
+   ============================================================================= */
+
+.sunnytree-sample-block__items {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sunnytree-sample-block__item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--wp--preset--color--border, #e5e7eb);
+}
+
+.sunnytree-sample-block__item:last-child {
+    border-bottom: none;
+}
+
+.sunnytree-sample-block__item strong {
+    font-weight: 600;
+    color: var(--wp--preset--color--foreground, #1f2937);
+}
+
+.sunnytree-sample-block__item span {
+    font-size: var(--wp--preset--font-size--small, 0.875rem);
+    color: var(--wp--preset--color--muted, #6b7280);
+}
+
+/* =============================================================================
+   ALIGNMENT VARIATIONS
+   ============================================================================= */
+
+/* Horizontal Alignment */
+.sunnytree-sample-block.halign-left .sunnytree-sample-block__content-wrapper {
+    align-items: flex-start;
+    text-align: left;
+}
+
+.sunnytree-sample-block.halign-center .sunnytree-sample-block__content-wrapper {
+    align-items: center;
+    text-align: center;
+}
+
+.sunnytree-sample-block.halign-right .sunnytree-sample-block__content-wrapper {
+    align-items: flex-end;
+    text-align: right;
+}
+
+/* Vertical Alignment (for horizontal layouts) */
+.sunnytree-sample-block.valign-top .sunnytree-sample-block__inner {
+    align-items: flex-start;
+}
+
+.sunnytree-sample-block.valign-center .sunnytree-sample-block__inner {
+    align-items: center;
+}
+
+.sunnytree-sample-block.valign-bottom .sunnytree-sample-block__inner {
+    align-items: flex-end;
+}
+
+/* =============================================================================
+   COLUMN VARIATIONS
+   ============================================================================= */
+
+/* Multi-column layout (when columns > 1) */
+.sunnytree-sample-block.has-columns-2 .sunnytree-sample-block__inner,
+.sunnytree-sample-block.has-columns-3 .sunnytree-sample-block__inner,
+.sunnytree-sample-block.has-columns-4 .sunnytree-sample-block__inner,
+.sunnytree-sample-block.has-columns-5 .sunnytree-sample-block__inner,
+.sunnytree-sample-block.has-columns-6 .sunnytree-sample-block__inner {
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.sunnytree-sample-block.has-columns-2 .sunnytree-sample-block__media,
+.sunnytree-sample-block.has-columns-2 .sunnytree-sample-block__content-wrapper {
+    flex: 1 1 calc(50% - var(--gap) / 2);
+    min-width: 250px;
+}
+
+/* =============================================================================
+   BLOCK ALIGNMENT (WordPress alignwide/alignfull)
+   ============================================================================= */
+
+.sunnytree-sample-block.alignwide {
+    max-width: var(--wp--style--global--wide-size, 1200px);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sunnytree-sample-block.alignfull {
+    max-width: none;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+}
+
+.sunnytree-sample-block.alignleft {
+    float: left;
+    margin-right: 1.5rem;
+    margin-bottom: 1rem;
+    max-width: 50%;
+}
+
+.sunnytree-sample-block.alignright {
+    float: right;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+    max-width: 50%;
+}
+
+.sunnytree-sample-block.aligncenter {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* =============================================================================
+   BLOCK STYLE VARIATIONS (defined in block.json)
+   ============================================================================= */
+
+/* Card Style */
+.sunnytree-sample-block.is-style-card {
+    background-color: var(--wp--preset--color--background, #ffffff);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+    border: none;
+}
+
+.sunnytree-sample-block.is-style-card:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+/* Outlined Style */
+.sunnytree-sample-block.is-style-outlined {
+    background-color: transparent;
+    border: 2px solid var(--wp--preset--color--border, #e5e7eb);
+}
+
+/* Filled Style */
+.sunnytree-sample-block.is-style-filled {
+    background-color: var(--wp--preset--color--primary, #2563eb);
+    color: #ffffff;
+    border-color: var(--wp--preset--color--primary, #2563eb);
+}
+
+.sunnytree-sample-block.is-style-filled .sunnytree-sample-block__title,
+.sunnytree-sample-block.is-style-filled .sunnytree-sample-block__content,
+.sunnytree-sample-block.is-style-filled .sunnytree-sample-block__date,
+.sunnytree-sample-block.is-style-filled .sunnytree-sample-block__icon {
+    color: #ffffff;
+}
+
+.sunnytree-sample-block.is-style-filled .sunnytree-sample-block__tag {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+.sunnytree-sample-block.is-style-filled .sunnytree-sample-block__button--outline {
+    border-color: #ffffff;
+    color: #ffffff;
+}
+
+.sunnytree-sample-block.is-style-filled .sunnytree-sample-block__button--outline:hover {
+    background-color: #ffffff;
+    color: var(--wp--preset--color--primary, #2563eb);
+}
+
+/* =============================================================================
+   DEBUG STYLES (Development only)
+   ============================================================================= */
+
+.sunnytree-sample-block__debug {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background-color: #fef3c7;
+    border: 1px solid #f59e0b;
+    border-radius: 4px;
+    font-size: 0.75rem;
+}
+
+.sunnytree-sample-block__debug summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: #92400e;
+}
+
+.sunnytree-sample-block__debug pre {
+    margin: 0.5rem 0 0;
+    padding: 0.5rem;
+    background-color: #1f2937;
+    color: #10b981;
+    border-radius: 4px;
+    overflow-x: auto;
+    font-family: ui-monospace, monospace;
+    font-size: 0.7rem;
+    line-height: 1.5;
+}
+
+/* =============================================================================
+   EDITOR-SPECIFIC STYLES
+   ============================================================================= */
+
+/* Placeholder styles in editor */
+.sunnytree-sample-block [data-rich-text-placeholder]::before {
+    color: var(--wp--preset--color--muted, #9ca3af);
+    font-style: italic;
+}
+
+/* Focus state in editor */
+.sunnytree-sample-block:focus-within {
+    outline: 2px solid var(--wp--preset--color--primary, #2563eb);
+    outline-offset: 2px;
+}
+
+/* =============================================================================
+   RESPONSIVE STYLES
+   ============================================================================= */
+
+@media (max-width: 782px) {
+    .sunnytree-sample-block {
+        padding: var(--wp--preset--spacing--30, 1rem);
+    }
+
+    .sunnytree-sample-block.alignleft,
+    .sunnytree-sample-block.alignright {
+        float: none;
+        margin-left: 0;
+        margin-right: 0;
+        max-width: 100%;
+    }
+
+    .sunnytree-sample-block.has-columns-2 .sunnytree-sample-block__inner,
+    .sunnytree-sample-block.has-columns-3 .sunnytree-sample-block__inner,
+    .sunnytree-sample-block.has-columns-4 .sunnytree-sample-block__inner,
+    .sunnytree-sample-block.has-columns-5 .sunnytree-sample-block__inner,
+    .sunnytree-sample-block.has-columns-6 .sunnytree-sample-block__inner {
+        flex-direction: column;
+    }
+
+    .sunnytree-sample-block.has-columns-2 .sunnytree-sample-block__media,
+    .sunnytree-sample-block.has-columns-2 .sunnytree-sample-block__content-wrapper {
+        flex: 1 1 100%;
+        min-width: 0;
+    }
+}
+
+/* =============================================================================
+   PRINT STYLES
+   ============================================================================= */
+
+@media print {
+    .sunnytree-sample-block {
+        border: 1px solid #000;
+        box-shadow: none;
+        page-break-inside: avoid;
+    }
+
+    .sunnytree-sample-block__debug {
+        display: none;
+    }
+
+    .sunnytree-sample-block__button {
+        border: 1px solid currentColor;
+    }
+}
+
+/* =============================================================================
+   REDUCED MOTION
+   ============================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .sunnytree-sample-block__image,
+    .sunnytree-sample-block__button,
+    .sunnytree-sample-block.is-style-card {
+        transition: none;
+    }
+}

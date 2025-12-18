@@ -1,0 +1,95 @@
+/**
+ * Product Grid Block Styles
+ */
+
+.sunnytree-product-grid {
+	width: 100%;
+}
+
+.sunnytree-product-grid .products {
+	display: grid;
+	gap: 1.5rem;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+/* Column variations */
+.sunnytree-product-grid.columns-2 .products {
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.sunnytree-product-grid.columns-3 .products {
+	grid-template-columns: repeat(3, 1fr);
+}
+
+.sunnytree-product-grid.columns-4 .products {
+	grid-template-columns: repeat(4, 1fr);
+}
+
+.sunnytree-product-grid.columns-5 .products {
+	grid-template-columns: repeat(5, 1fr);
+}
+
+.sunnytree-product-grid.columns-6 .products {
+	grid-template-columns: repeat(6, 1fr);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+	.sunnytree-product-grid.columns-4 .products,
+	.sunnytree-product-grid.columns-5 .products,
+	.sunnytree-product-grid.columns-6 .products {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@media (max-width: 768px) {
+	.sunnytree-product-grid.columns-3 .products,
+	.sunnytree-product-grid.columns-4 .products,
+	.sunnytree-product-grid.columns-5 .products,
+	.sunnytree-product-grid.columns-6 .products {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 480px) {
+	.sunnytree-product-grid .products {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* Editor-specific styles */
+.sunnytree-product-grid__loading {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 2rem;
+	text-align: center;
+}
+
+.sunnytree-product-grid__container {
+	display: grid;
+	gap: 1.5rem;
+}
+
+.sunnytree-product-grid.columns-2 .sunnytree-product-grid__container {
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.sunnytree-product-grid.columns-3 .sunnytree-product-grid__container {
+	grid-template-columns: repeat(3, 1fr);
+}
+
+.sunnytree-product-grid.columns-4 .sunnytree-product-grid__container {
+	grid-template-columns: repeat(4, 1fr);
+}
+
+.sunnytree-product-grid.columns-5 .sunnytree-product-grid__container {
+	grid-template-columns: repeat(5, 1fr);
+}
+
+.sunnytree-product-grid.columns-6 .sunnytree-product-grid__container {
+	grid-template-columns: repeat(6, 1fr);
+}

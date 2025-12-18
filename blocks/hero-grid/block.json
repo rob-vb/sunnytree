@@ -1,0 +1,120 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "sunnytree/hero-grid",
+    "version": "1.0.0",
+    "title": "Hero Grid",
+    "category": "sunnytree",
+    "icon": "grid-view",
+    "description": "A three-section hero grid with customizable images, titles, descriptions, and links.",
+    "keywords": ["hero", "grid", "sections", "sunnytree"],
+    "textdomain": "sunnytree",
+
+    "attributes": {
+        "section1ImageId": {
+            "type": "number",
+            "default": 0
+        },
+        "section1ImageUrl": {
+            "type": "string",
+            "default": ""
+        },
+        "section1ImageAlt": {
+            "type": "string",
+            "default": ""
+        },
+        "section1Title": {
+            "type": "string",
+            "default": ""
+        },
+        "section1Description": {
+            "type": "string",
+            "default": ""
+        },
+        "section1LinkUrl": {
+            "type": "string",
+            "default": ""
+        },
+        "section1LinkText": {
+            "type": "string",
+            "default": ""
+        },
+        "section1LinkTarget": {
+            "type": "string",
+            "default": "_self"
+        },
+
+        "section2ImageId": {
+            "type": "number",
+            "default": 0
+        },
+        "section2ImageUrl": {
+            "type": "string",
+            "default": ""
+        },
+        "section2ImageAlt": {
+            "type": "string",
+            "default": ""
+        },
+
+        "section3Title": {
+            "type": "string",
+            "default": ""
+        },
+        "section3Description": {
+            "type": "string",
+            "default": ""
+        },
+        "section3LinkUrl": {
+            "type": "string",
+            "default": ""
+        },
+        "section3LinkText": {
+            "type": "string",
+            "default": ""
+        },
+        "section3LinkTarget": {
+            "type": "string",
+            "default": "_self"
+        },
+        "section3ImageId": {
+            "type": "number",
+            "default": 0
+        },
+        "section3ImageUrl": {
+            "type": "string",
+            "default": ""
+        },
+        "section3ImageAlt": {
+            "type": "string",
+            "default": ""
+        }
+    },
+
+    "supports": {
+        "html": false,
+        "anchor": true,
+        "customClassName": true,
+        "className": true,
+        "align": ["wide", "full"],
+        "alignWide": true,
+        "spacing": {
+            "margin": true,
+            "padding": true
+        }
+    },
+
+    "example": {
+        "attributes": {
+            "section1Title": "De tropische planten webshop",
+            "section1Description": "Sunny Tree is de specialist op het gebied van tropische planten en bomen.",
+            "section1LinkText": "Bekijk aanbod",
+            "section3Title": "Citrusbomen",
+            "section3Description": "Bekijk het aanbod in verschillende citrusbomen"
+        }
+    },
+
+    "editorScript": "file:./editor.js",
+    "style": "file:./style.css",
+    "render": "file:./render.php"
+}

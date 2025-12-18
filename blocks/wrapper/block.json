@@ -1,0 +1,30 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "sunnytree/wrapper",
+    "version": "1.0.0",
+    "title": "Wrapper",
+    "category": "sunnytree",
+    "icon": "editor-contract",
+    "description": "Wraps content in a container div.",
+    "keywords": ["wrapper", "container", "layout"],
+    "textdomain": "sunnytree",
+
+    "supports": {
+        "html": false,
+        "anchor": true,
+        "align": ["wide", "full"],
+        "color": {
+            "background": true,
+            "text": false,
+            "gradients": true
+        },
+        "spacing": {
+            "padding": ["top", "bottom"],
+            "margin": false
+        }
+    },
+
+    "editorScript": "file:./editor.js",
+    "render": "file:./render.php"
+}

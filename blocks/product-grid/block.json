@@ -1,0 +1,75 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "sunnytree/product-grid",
+    "version": "1.0.0",
+    "title": "Product Grid",
+    "category": "sunnytree",
+    "icon": "products",
+    "description": "Display a customizable grid of WooCommerce products.",
+    "keywords": ["product", "grid", "woocommerce", "shop", "sunnytree"],
+    "textdomain": "sunnytree",
+
+    "attributes": {
+        "productIds": {
+            "type": "array",
+            "default": []
+        },
+        "columns": {
+            "type": "number",
+            "default": 4
+        },
+        "displayType": {
+            "type": "string",
+            "default": "selected"
+        },
+        "category": {
+            "type": "string",
+            "default": ""
+        },
+        "limit": {
+            "type": "number",
+            "default": 8
+        },
+        "orderBy": {
+            "type": "string",
+            "default": "date"
+        },
+        "order": {
+            "type": "string",
+            "default": "DESC"
+        },
+        "onSale": {
+            "type": "boolean",
+            "default": false
+        },
+        "featured": {
+            "type": "boolean",
+            "default": false
+        }
+    },
+
+    "supports": {
+        "html": false,
+        "anchor": true,
+        "customClassName": true,
+        "className": true,
+        "align": ["wide", "full"],
+        "alignWide": true,
+        "spacing": {
+            "margin": true,
+            "padding": true
+        }
+    },
+
+    "example": {
+        "attributes": {
+            "columns": 4,
+            "limit": 4
+        }
+    },
+
+    "editorScript": "file:./editor.js",
+    "style": "file:./style.css",
+    "render": "file:./render.php"
+}
