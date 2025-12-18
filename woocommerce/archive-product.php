@@ -48,6 +48,8 @@ do_action('woocommerce_shop_loop_header');
 		<div class="col-xs-12 col-sm-12 col-md-9">
 			<?php if (is_product_category()) : ?>
 				<h1 class="sunny-pagetitle"><?php single_term_title(); ?></h1>
+			<?php elseif (is_search()) : ?>
+				<h1 class="sunny-pagetitle"><?php printf(esc_html__('Zoekresultaten voor: %s', 'sunnytree'), '<span>' . esc_html(get_search_query()) . '</span>'); ?></h1>
 			<?php endif; ?>
 
 			<?php

@@ -1,0 +1,35 @@
+/**
+ * Single Product Page Styles
+ *
+ * @package SunnyTree
+ */
+
+// Variant button active state
+.sunny-varianten-tegel {
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+
+  &--active {
+    border-color: var(--color-primary, #f5a623);
+    background-color: rgba(245, 166, 35, 0.1);
+  }
+
+  &:hover:not(.sunny-varianten-tegel--active) {
+    border-color: var(--color-gray-400, #9ca3af);
+  }
+}
+
+// Add-to-cart button states
+[data-add-to-cart] {
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+
+  &.is-loading {
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
+  &.is-added {
+    background-color: var(--color-success, #22c55e);
+  }
+}

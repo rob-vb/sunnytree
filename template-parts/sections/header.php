@@ -2,46 +2,32 @@
 <header>
     <div class="sunny-topbar">
         <div class="container">
+<?php
+            $usps = \SunnyTree\TemplateTags\get_usps();
+            if (! empty($usps)) :
+            ?>
             <ul class="sunny-topbar-usp">
-                <li>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
-                    </svg>
-                    <span>24/7 online geopend</span>
-                </li>
-                <li>
-                    <svg width="24px" height="24px" viewBox="0 0 24 24" stroke-width="1.5" fill="none"
-                        xmlns="http://www.w3.org/2000/svg" color="#000000">
-                        <path d="M12 22L12 14M12 10L12 14M12 14L16 12" stroke="#000000" stroke-width="1.5"
-                            stroke-linecap="round" stroke-linejoin="round"></path>
-                        <path d="M17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7" stroke="#000000"
-                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                        <path d="M12 18H7.5C4.46243 18 2 15.5376 2 12.5C2 9.46243 4.46243 7 7.5 7H9" stroke="#000000"
-                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                        <path d="M12 18H16.5C19.5376 18 22 15.5376 22 12.5C22 9.63102 19.8033 7.27508 17 7.02246"
-                            stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                    </svg>
-                    <span>Dé specialist op gebied van tropische bomen</span>
-                </li>
-                <li>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12">
-                        </path>
-                    </svg>
-                    <span>Voor 12 uur besteld, vandaag&nbsp;verzonden!</span>
-                </li>
+                <?php foreach ($usps as $usp) : ?>
+                    <li>
+                        <?php if (! empty($usp['link'])) : ?>
+                            <a href="<?php echo esc_url($usp['link']); ?>">
+                        <?php endif; ?>
+                        <?php \SunnyTree\TemplateTags\render_icon($usp['icon'], ['stroke-width' => '1.5']); ?>
+                        <span><?php echo esc_html($usp['text']); ?></span>
+                        <?php if (! empty($usp['link'])) : ?>
+                            </a>
+                        <?php endif; ?>
+                    </li>
+                <?php endforeach; ?>
             </ul>
+            <?php endif; ?>
             <div class="sunny-service-links">
                 <a class="sunny-online-link" href="/contact">
                     <span class="sunny-online open"></span>
                     <span class="sunny-online-txt">Klantenservice</span>
                 </a>
             </div>
-            <div class="sunny-language">
+            <!-- <div class="sunny-language">
                 <div class="sunny-selected-lan">
                     <img src="https://sunnytree.nl/Files/10/334000/334323/Protom/3039936/Media/nl.svg" alt="NL">
                     <span>NL</span>
@@ -62,7 +48,7 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 
@@ -75,12 +61,12 @@
                     </span>
                 </div>
             </div>
-            <a class="sunny-logo" href="/">
+            <a class="sunny-logo" href="<?php echo esc_url(home_url('/')); ?>">
                 <img height="50" width="194"
-                    src="https://sunnytree.nl/Files/10/334000/334323/Protom/3039936/Media/SunnyTree_Logo.svg"
-                    alt="logo Sunny Tree" title="logo Sunny Tree">
+                    src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/sunnytree_logo.svg'); ?>"
+                    alt="<?php esc_attr_e('logo Sunny Tree', 'sunnytree'); ?>" title="<?php esc_attr_e('logo Sunny Tree', 'sunnytree'); ?>">
             </a>
-            <a target="_blank" href="https://g.co/kgs/iBvom8k" class="sunny-review">
+            <!-- <a target="_blank" href="https://g.co/kgs/iBvom8k" class="sunny-review">
                 <span class="sunny-r-number">5,0/5</span>
                 <span class="sunny-r-stars">
                     <img height="15" width="105"
@@ -88,19 +74,18 @@
                         title="stars">
                 </span>
                 <span class="sunny-r-amount">99 Reviews</span>
-            </a>
-            <div class="sunny-desktop-search">
-                <input class="sunny-search-input" type="text" id="SearchField" placeholder="Zoeken naar ..."
-                    onkeypress="if(EnterPressed(event)){ GoTo('https://sunnytree.nl/website/index.php?Show=Search&amp;KeyWord=' + Get('SearchField'));}">
-                <span class="sunny-search-icon"
-                    onclick="window.location='https://sunnytree.nl/website/index.php?Show=Search&amp;KeyWord=' + $('#SearchField').val();">
+            </a> -->
+            <form class="sunny-desktop-search" action="<?php echo esc_url(home_url('/')); ?>" method="get" role="search">
+                <input type="hidden" name="post_type" value="product">
+                <input class="sunny-search-input" type="text" name="s" id="SearchField" placeholder="Zoeken naar ..." value="<?php echo esc_attr(get_search_query()); ?>">
+                <button type="submit" class="sunny-search-icon" aria-label="<?php esc_attr_e('Zoeken', 'sunnytree'); ?>">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path>
                     </svg>
-                </span>
-            </div>
+                </button>
+            </form>
             <div class="sunny-main-icons">
                 <span class="sunny-m-search">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -109,7 +94,7 @@
                             d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path>
                     </svg>
                 </span>
-                <a class="sunny-login" href="https://sunnytree.nl/website/index.php?Show=WebShopUserLogin">
+                <a class="sunny-login" href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -117,23 +102,23 @@
                         </path>
                     </svg>
                 </a>
-                <a class="sunny-wishlist" href="/website/index.php?Show=CustomerWishlistLogin">
+                <!-- <a class="sunny-wishlist" href="/website/index.php?Show=CustomerWishlistLogin">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z">
                         </path>
                     </svg>
-                </a>
+                </a> -->
                 <div id="SmallBasket">
-                    <a href="https://sunnytree.nl/website/index.php?Show=WebShopBasket">
+                    <a href="<?php echo esc_url(wc_get_cart_url()); ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z">
                             </path>
                         </svg>
-                        <span class="sunny-counter">0</span>
+                        <span class="sunny-counter"><?php echo WC()->cart ? WC()->cart->get_cart_contents_count() : 0; ?></span>
                     </a>
                     <div class="SmallBasketWrapper">
                         <div class="m-fcart-container cart-empty">
@@ -151,10 +136,10 @@
                                     </div>
                                     <div class="m-fcart-footer">
                                         <a class="sunny-btn sunny-btn-clear c-cart-btn"
-                                            href="https://sunnytree.nl/website/index.php?Show=WebShopBasket">Wijzig
+                                            href="<?php echo esc_url(wc_get_cart_url()); ?>">Wijzig
                                             winkelwagen</a>
                                         <a class="sunny-btn sunny-btn-green c-cart-btn"
-                                            href="https://sunnytree.nl/website/index.php?Show=WebShopBasket">Bestellen</a>
+                                            href="<?php echo esc_url(wc_get_checkout_url()); ?>">Bestellen</a>
                                     </div>
                                 </div>
                             </div>
@@ -167,16 +152,17 @@
 
     <div class="sunny-search">
         <div class="container">
-            <div class="sunny-search-input">
-                <input class="sunny-search-input" type="text" id="SearchField2" placeholder="Waar bent u naar op zoek?"
-                    onkeypress="if(EnterPressed(event)){ GoTo('https://sunnytree.nl/website/index.php?Show=Search&amp;KeyWord=' + Get('SearchField2'));}">
-                <svg onclick="window.location='https://sunnytree.nl/website/index.php?Show=Search&amp;KeyWord=' + $('#SearchField2').val();"
-                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path>
-                </svg>
-            </div>
+            <form class="sunny-search-input" action="<?php echo esc_url(home_url('/')); ?>" method="get" role="search">
+                <input type="hidden" name="post_type" value="product">
+                <input class="sunny-search-input" type="text" name="s" id="SearchField2" placeholder="Waar bent u naar op zoek?" value="<?php echo esc_attr(get_search_query()); ?>">
+                <button type="submit" class="sunny-search-btn" aria-label="<?php esc_attr_e('Zoeken', 'sunnytree'); ?>">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path>
+                    </svg>
+                </button>
+            </form>
             <svg class="feather search-close feather-x" fill="none" stroke="currentColor" stroke-linecap="round"
                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <line x1="18" x2="6" y1="6" y2="18"></line>
@@ -505,21 +491,22 @@
     </div>
 </nav>
 
+<?php
+$mobile_usps = \SunnyTree\TemplateTags\get_usps();
+if (! empty($mobile_usps)) :
+    $first_usp = reset($mobile_usps);
+?>
 <div class="sunny-mobile-usp">
     <div class="container">
         <ul>
             <li>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12">
-                    </path>
-                </svg>
-                <span>Voor 12 uur besteld, vandaag&nbsp;verzonden!</span>
+                <?php \SunnyTree\TemplateTags\render_icon($first_usp['icon'], ['stroke-width' => '1.5']); ?>
+                <span><?php echo esc_html($first_usp['text']); ?></span>
             </li>
         </ul>
     </div>
 </div>
+<?php endif; ?>
 
 <div class="sunny-mobile-review">
     <div class="container">

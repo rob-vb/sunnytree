@@ -1,8 +1,17 @@
 import { defineConfig } from 'vite';
 import liveReload from 'vite-plugin-live-reload';
+import autoprefixer from 'autoprefixer';
 import { resolve } from 'path';
 
 export default defineConfig({
+  css: {
+    postcss: {
+      plugins: [
+        autoprefixer(),
+      ],
+    },
+  },
+
   plugins: [
     liveReload([
       __dirname + '/**/*.php',
@@ -25,6 +34,7 @@ export default defineConfig({
     outDir: resolve(__dirname, 'dist'),
     emptyOutDir: true,
     manifest: true,
+    cssCodeSplit: false,
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'src/js/main.js'),
@@ -32,6 +42,7 @@ export default defineConfig({
       output: {
         format: 'iife',
         entryFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash][extname]',
       },
     },
   },

@@ -129,8 +129,8 @@ function sanitize_filter_params(array $params): array
         ? array_map('sanitize_text_field', (array) $params['winterhard'])
         : [];
 
-    $sanitized['hoogte'] = isset($params['hoogte'])
-        ? array_map('sanitize_text_field', (array) $params['hoogte'])
+    $sanitized['hoogte_tussen'] = isset($params['hoogte_tussen'])
+        ? array_map('sanitize_text_field', (array) $params['hoogte_tussen'])
         : [];
 
     $sanitized['orderby'] = isset($params['orderby'])
@@ -217,7 +217,7 @@ function build_product_query(array $filters): array
     $attribute_filters = [
         'standplaats'     => 'pa_standplaats',
         'winterhard' => 'pa_winterhard',
-        'hoogte'       => 'pa_hoogte',
+        'hoogte_tussen'       => 'pa_hoogte_tussen',
     ];
 
     foreach ($attribute_filters as $param_key => $taxonomy) {
@@ -279,7 +279,7 @@ function get_filter_options(): array
         'categories'  => get_subcategories(),
         'standplaats'    => get_attribute_terms('pa_standplaats'),
         'winterhard'  => get_attribute_terms('pa_winterhard'),
-        'hoogte'      => get_attribute_terms('pa_hoogte'),
+        'hoogte_tussen'      => get_attribute_terms('pa_hoogte_tussen'),
     ];
 
     return apply_filters('sunnytree_filter_options', $options);

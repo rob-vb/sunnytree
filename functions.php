@@ -29,6 +29,7 @@ require_once SUNNYTREE_DIR . '/inc/template-tags.php';
 require_once SUNNYTREE_DIR . '/inc/category-linked-page.php';
 require_once SUNNYTREE_DIR . '/inc/product-subtitle.php';
 require_once SUNNYTREE_DIR . '/inc/product-filters.php';
+require_once SUNNYTREE_DIR . '/inc/product-attribute-icons.php';
 require_once SUNNYTREE_DIR . '/blocks/index.php';
 
 /**
@@ -143,13 +144,15 @@ function enqueue_assets(): void
     }
 
     // Production: load compiled assets
-    $css_url = vite_asset('js/main.js');
+    $js_url = vite_asset('js/main.js');
 
-    if ($css_url) {
+    if ($js_url) {
         // Get CSS file from manifest
         $manifest_path = SUNNYTREE_DIR . '/dist/.vite/manifest.json';
         if (file_exists($manifest_path)) {
             $manifest = json_decode(file_get_contents($manifest_path), true);
+
+            // Check for CSS in main.js entry (Vite default)
             if (isset($manifest['js/main.js']['css'])) {
                 foreach ($manifest['js/main.js']['css'] as $css_file) {
                     wp_enqueue_style(
@@ -160,12 +163,21 @@ function enqueue_assets(): void
                     );
                 }
             }
+            // Check for separate style.css entry (IIFE build)
+            elseif (isset($manifest['style.css']['file'])) {
+                wp_enqueue_style(
+                    'sunnytree-style',
+                    SUNNYTREE_URI . '/dist/' . $manifest['style.css']['file'],
+                    [],
+                    SUNNYTREE_VERSION
+                );
+            }
         }
 
         // Enqueue JS
         wp_enqueue_script(
             'sunnytree-main',
-            $css_url,
+            $js_url,
             ['jquery'],
             SUNNYTREE_VERSION,
             true
@@ -188,6 +200,8 @@ function enqueue_editor_assets(): void
             foreach ($manifest['js/main.js']['css'] as $css_file) {
                 add_editor_style('dist/' . $css_file);
             }
+        } elseif (isset($manifest['style.css']['file'])) {
+            add_editor_style('dist/' . $manifest['style.css']['file']);
         }
     }
 }
@@ -204,8 +218,8 @@ function cart_count_fragments(array $fragments): array
 
     $count = WC()->cart->get_cart_contents_count();
 
-    $fragments['.site-header__cart-count'] = sprintf(
-        '<span class="site-header__action-badge site-header__cart-count" data-cart-count>%d</span>',
+    $fragments['.sunny-counter'] = sprintf(
+        '<span class="sunny-counter">%d</span>',
         $count
     );
 
@@ -214,7 +228,27 @@ function cart_count_fragments(array $fragments): array
 add_filter('woocommerce_add_to_cart_fragments', __NAMESPACE__ . '\cart_count_fragments');
 
 /**
- * Use category-specific product template on product category pages
+ * Check if current page should use category-style product layout
+ *
+ * @return bool True if category layout should be used
+ */
+function should_use_category_layout(): bool
+{
+    // Product category pages
+    if (\is_product_category()) {
+        return true;
+    }
+
+    // Product search results
+    if (\is_search() && isset($_GET['post_type']) && $_GET['post_type'] === 'product') {
+        return true;
+    }
+
+    return false;
+}
+
+/**
+ * Use category-specific product template on product category pages and search
  *
  * @param string $template  Template path
  * @param string $slug      Template slug
@@ -223,7 +257,7 @@ add_filter('woocommerce_add_to_cart_fragments', __NAMESPACE__ . '\cart_count_fra
  */
 function category_product_template(string $template, string $slug, string $name): string
 {
-    if ($slug === 'content' && $name === 'product' && \is_product_category()) {
+    if ($slug === 'content' && $name === 'product' && should_use_category_layout()) {
         $category_template = \get_stylesheet_directory() . '/woocommerce/content-product-category.php';
         if (file_exists($category_template)) {
             return $category_template;
@@ -234,7 +268,7 @@ function category_product_template(string $template, string $slug, string $name)
 add_filter('wc_get_template_part', __NAMESPACE__ . '\category_product_template', 10, 3);
 
 /**
- * Use category-specific loop templates on product category pages
+ * Use category-specific loop templates on product category pages and search
  *
  * @param string $template      Template path
  * @param string $template_name Template name
@@ -242,7 +276,7 @@ add_filter('wc_get_template_part', __NAMESPACE__ . '\category_product_template',
  */
 function category_loop_templates(string $template, string $template_name): string
 {
-    if (! \is_product_category()) {
+    if (! should_use_category_layout()) {
         return $template;
     }
 
@@ -301,3 +335,22 @@ add_filter('woocommerce_breadcrumb_defaults', __NAMESPACE__ . '\custom_breadcrum
  * We display our own title in archive-product.php
  */
 remove_action('woocommerce_shop_loop_header', 'woocommerce_product_taxonomy_archive_header', 10);
+
+/**
+ * Wrap result count and ordering in a custom div
+ */
+remove_action('woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
+remove_action('woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30);
+
+function category_actions_wrapper(): void
+{
+    echo '<div class="category-actions">';
+    \woocommerce_result_count();
+    \woocommerce_catalog_ordering();
+    echo '</div>';
+}
+add_action('woocommerce_before_shop_loop', __NAMESPACE__ . '\category_actions_wrapper', 20);
+
+// TODO: Custom product page gallery hooks (disabled for now)
+// function disable_woocommerce_gallery_features(): void { ... }
+// function product_gallery_scripts(): void { ... }

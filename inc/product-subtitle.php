@@ -18,16 +18,20 @@ if (! defined('ABSPATH')) {
 
 /**
  * Add subtitle field to product General tab
+ *
+ * Uses show_if_* classes to ensure field appears for all product types
  */
 function add_subtitle_field(): void
 {
+    echo '<div class="options_group show_if_simple show_if_variable show_if_grouped show_if_external">';
     woocommerce_wp_text_input([
         'id'          => '_product_subtitle',
         'label'       => __('Subtitle', 'sunnytree'),
-        'description' => __('Optional subtitle displayed below product name on category pages (e.g., Latin name)', 'sunnytree'),
+        'description' => __('Optional subtitle displayed below product name (e.g., Latin name)', 'sunnytree'),
         'desc_tip'    => true,
         'placeholder' => __('e.g., Olea Europaea', 'sunnytree'),
     ]);
+    echo '</div>';
 }
 add_action('woocommerce_product_options_general_product_data', __NAMESPACE__ . '\add_subtitle_field');
 
