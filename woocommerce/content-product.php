@@ -27,6 +27,19 @@ $is_on_sale = $product->is_on_sale();
 $is_in_stock = $product->is_in_stock();
 $stock_status = $product->get_stock_status();
 
+// Get the deepest (most specific) category for this product
+$terms = wc_get_product_terms($product_id, 'product_cat', ['orderby' => 'parent', 'order' => 'DESC']);
+$category = null;
+$max_depth = -1;
+
+foreach ($terms as $term) {
+    $depth = count(get_ancestors($term->term_id, 'product_cat', 'taxonomy'));
+    if ($depth > $max_depth) {
+        $max_depth = $depth;
+        $category = $term;
+    }
+}
+
 // Calculate sale percentage
 $sale_percentage = '';
 if ($is_on_sale) {

@@ -129,6 +129,10 @@ function sanitize_filter_params(array $params): array
         ? array_map('sanitize_text_field', (array) $params['winterhard'])
         : [];
 
+    $sanitized['hoogte'] = isset($params['hoogte'])
+        ? array_map('sanitize_text_field', (array) $params['hoogte'])
+        : [];
+
     $sanitized['hoogte_tussen'] = isset($params['hoogte_tussen'])
         ? array_map('sanitize_text_field', (array) $params['hoogte_tussen'])
         : [];
@@ -215,9 +219,10 @@ function build_product_query(array $filters): array
 
     // Attribute filters
     $attribute_filters = [
-        'standplaats'     => 'pa_standplaats',
-        'winterhard' => 'pa_winterhard',
-        'hoogte_tussen'       => 'pa_hoogte_tussen',
+        'standplaats'   => 'pa_standplaats',
+        'winterhard'    => 'pa_winterhard',
+        'hoogte'        => 'pa_hoogte',
+        'hoogte_tussen' => 'pa_hoogte_tussen',
     ];
 
     foreach ($attribute_filters as $param_key => $taxonomy) {
@@ -275,11 +280,11 @@ function build_product_query(array $filters): array
 function get_filter_options(): array
 {
     $options = [
-        'price_range' => get_price_range(),
-        'categories'  => get_subcategories(),
-        'standplaats'    => get_attribute_terms('pa_standplaats'),
-        'winterhard'  => get_attribute_terms('pa_winterhard'),
-        'hoogte_tussen'      => get_attribute_terms('pa_hoogte_tussen'),
+        'price_range'   => get_price_range(),
+        'categories'    => get_subcategories(),
+        'standplaats'   => get_attribute_terms('pa_standplaats'),
+        'winterhard'    => get_attribute_terms('pa_winterhard'),
+        'hoogte_tussen' => get_attribute_terms('pa_hoogte_tussen'),
     ];
 
     return apply_filters('sunnytree_filter_options', $options);

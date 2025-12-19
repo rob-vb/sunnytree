@@ -78,14 +78,14 @@ if (is_product_category()) {
                 ?>
             <?php endif; ?>
 
-            <!-- Hoogte -->
-            <?php if (! empty($options['hoogte'])) : ?>
+            <!-- Hoogte (tussen) -->
+            <?php if (! empty($options['hoogte_tussen'])) : ?>
                 <?php
                 get_template_part('template-parts/woocommerce/filter-group', null, [
-                    'title'               => __('Hoogte', 'sunnytree'),
+                    'title'               => __('Hoogte (tussen)', 'sunnytree'),
                     'subtitle'            => __('De hoogte ligt tussen de:', 'sunnytree'),
-                    'name'                => 'hoogte',
-                    'items'               => $options['hoogte'],
+                    'name'                => 'hoogte_tussen',
+                    'items'               => $options['hoogte_tussen'],
                     'show_more_threshold' => 5,
                 ]);
                 ?>

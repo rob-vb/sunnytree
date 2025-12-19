@@ -9,16 +9,25 @@ declare(strict_types=1);
 
 defined('ABSPATH') || exit;
 
-use function SunnyTree\ProductSubtitle\get_product_subtitle;
-
 global $product;
 
-$subtitle = get_product_subtitle($product->get_id());
+// Get the deepest (most specific) category for this product
+$terms = wc_get_product_terms($product->get_id(), 'product_cat', ['orderby' => 'parent', 'order' => 'DESC']);
+$category = null;
+$max_depth = -1;
+
+foreach ($terms as $term) {
+    $depth = count(get_ancestors($term->term_id, 'product_cat', 'taxonomy'));
+    if ($depth > $max_depth) {
+        $max_depth = $depth;
+        $category = $term;
+    }
+}
 ?>
 <span class="h1-mob">
-    <?php the_title(); ?>
-    <?php if ($subtitle) : ?>
-        <span><?php echo esc_html($subtitle); ?></span>
+    <?php if ($category) : ?>
+        <a href="<?php echo esc_url(get_term_link($category)); ?>"><?php echo esc_html($category->name); ?></a>
     <?php endif; ?>
+    <span><?php the_title(); ?></span>
 </span>
 <div class="sunny-product-hoogte"></div>

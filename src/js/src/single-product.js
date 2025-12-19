@@ -8,7 +8,13 @@
  */
 
 import Swiper from 'swiper';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Thumbs, FreeMode } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/thumbs';
+import 'swiper/css/free-mode';
+import PhotoSwipeLightbox from 'photoswipe/lightbox';
+import 'photoswipe/style.css';
 
 class SingleProduct {
   constructor() {
@@ -18,6 +24,7 @@ class SingleProduct {
     this.addToCartBtn = document.querySelector('[data-add-to-cart]');
 
     this.mainSwiper = null;
+    this.thumbSwiper = null;
 
     this.init();
   }
@@ -25,7 +32,7 @@ class SingleProduct {
   init() {
     if (this.gallery) {
       this.initGallery();
-      this.initThumbnails();
+      this.initLightbox();
     }
 
     if (this.variantsContainer) {
@@ -42,74 +49,50 @@ class SingleProduct {
   }
 
   /**
-   * Initialize Swiper gallery
+   * Initialize Swiper gallery with thumbs
    */
   initGallery() {
-    const mainEl = this.gallery.querySelector('[data-gallery-main]');
+    const mainEl = this.gallery.querySelector('.product__gallery-main');
+    const thumbsEl = this.gallery.querySelector('.product__gallery-thumbs');
     if (!mainEl) return;
+
+    // Initialize thumbs first (if present)
+    if (thumbsEl) {
+      this.thumbSwiper = new Swiper(thumbsEl, {
+        modules: [FreeMode],
+        spaceBetween: 10,
+        slidesPerView: 4,
+        freeMode: true,
+        watchSlidesProgress: true,
+      });
+    }
 
     // Initialize main swiper
     this.mainSwiper = new Swiper(mainEl, {
-      modules: [Navigation],
+      modules: [Navigation, Thumbs],
       spaceBetween: 10,
       loop: true,
       navigation: {
-        nextEl: '[data-gallery-next]',
-        prevEl: '[data-gallery-prev]',
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
       },
-      on: {
-        slideChange: () => {
-          this.updateThumbnailActive();
-        },
-      },
+      thumbs: this.thumbSwiper ? { swiper: this.thumbSwiper } : undefined,
     });
   }
 
   /**
-   * Initialize thumbnail click navigation
+   * Initialize PhotoSwipe lightbox
    */
-  initThumbnails() {
-    const thumbContainer = this.gallery.querySelector('#product__thumb');
-    if (!thumbContainer) return;
+  initLightbox() {
+    const galleryEl = this.gallery.querySelector('#product__gallery');
+    if (!galleryEl) return;
 
-    const thumbs = thumbContainer.querySelectorAll('span[data-id]');
-
-    thumbs.forEach((thumb) => {
-      thumb.addEventListener('click', () => {
-        const slideIndex = parseInt(thumb.dataset.id, 10);
-
-        // Update swiper (accounting for loop mode duplicates)
-        if (this.mainSwiper) {
-          this.mainSwiper.slideToLoop(slideIndex);
-        }
-
-        // Update active thumbnail
-        thumbs.forEach((t) => t.classList.remove('thumb--active'));
-        thumb.classList.add('thumb--active');
-      });
+    const lightbox = new PhotoSwipeLightbox({
+      gallery: '#product__gallery',
+      children: 'a',
+      pswpModule: () => import('photoswipe'),
     });
-  }
-
-  /**
-   * Update thumbnail active state based on swiper position
-   */
-  updateThumbnailActive() {
-    if (!this.mainSwiper) return;
-
-    const thumbContainer = this.gallery.querySelector('#product__thumb');
-    if (!thumbContainer) return;
-
-    const thumbs = thumbContainer.querySelectorAll('span[data-id]');
-    const realIndex = this.mainSwiper.realIndex;
-
-    thumbs.forEach((thumb) => {
-      const thumbIndex = parseInt(thumb.dataset.id, 10);
-      if (thumbIndex === realIndex) {
-        thumb.classList.add('thumb--active');
-      } else {
-        thumb.classList.remove('thumb--active');
-      }
-    });
+    lightbox.init();
   }
 
   /**
@@ -299,47 +282,66 @@ class SingleProduct {
    */
   initAddToCart() {
     this.addToCartBtn.addEventListener('click', async () => {
-      const form = document.querySelector('#form-product');
-      if (!form) return;
-
       this.addToCartBtn.classList.add('is-loading');
 
       try {
-        const formData = new FormData(form);
-
-        // For simple products, add directly
+        // Collect main product
         const productId = this.addToCartBtn.dataset.productId;
-        const quantity = document.querySelector('#product__amount')?.value || 1;
+        const quantity = parseInt(document.querySelector('#product__amount')?.value || 1, 10);
 
-        // Check if it's using the multi-product form structure
-        const hasMultiProducts = document.querySelector('[name="product[0][product_id]"]');
+        // Build list of products to add
+        const productsToAdd = [];
 
-        if (hasMultiProducts) {
-          // Submit the multi-product form via AJAX
-          const response = await fetch(window.location.href, {
-            method: 'POST',
-            body: formData,
+        // Add main product
+        const mainProduct = {
+          product_id: productId,
+          quantity: quantity,
+        };
+
+        // Add variation data if present
+        const variationId = document.querySelector('[data-variation-id]')?.value;
+        if (variationId) {
+          mainProduct.variation_id = variationId;
+          mainProduct.attributes = {};
+          document.querySelectorAll('[data-attribute-field]').forEach((input) => {
+            mainProduct.attributes[input.name] = input.value;
           });
+        }
 
-          if (response.ok) {
-            // Redirect to cart or reload
-            window.location.reload();
+        productsToAdd.push(mainProduct);
+
+        // Collect selected cross-sell products
+        document.querySelectorAll('.sunny-c--product-line').forEach((line) => {
+          const amountInput = line.querySelector('.product-amount');
+          const productIdInput = line.querySelector('.product-id');
+
+          if (amountInput && amountInput.style.display !== 'none') {
+            const crossQuantity = parseInt(amountInput.value || 0, 10);
+            if (crossQuantity > 0 && productIdInput) {
+              productsToAdd.push({
+                product_id: productIdInput.value,
+                quantity: crossQuantity,
+              });
+            }
           }
-        } else {
-          // Simple add to cart
+        });
+
+        // Add each product via AJAX
+        let lastFragments = null;
+        let lastCartHash = null;
+
+        for (const product of productsToAdd) {
           const ajaxData = new URLSearchParams();
-          ajaxData.append('product_id', productId);
-          ajaxData.append('quantity', quantity);
+          ajaxData.append('product_id', product.product_id);
+          ajaxData.append('quantity', product.quantity);
 
-          // Add variation data if present
-          const variationId = document.querySelector('[data-variation-id]')?.value;
-          if (variationId) {
-            ajaxData.append('variation_id', variationId);
-
-            // Add attribute values
-            document.querySelectorAll('[data-attribute-field]').forEach((input) => {
-              ajaxData.append(input.name, input.value);
-            });
+          if (product.variation_id) {
+            ajaxData.append('variation_id', product.variation_id);
+            if (product.attributes) {
+              Object.entries(product.attributes).forEach(([key, value]) => {
+                ajaxData.append(key, value);
+              });
+            }
           }
 
           const response = await fetch('/?wc-ajax=add_to_cart', {
@@ -353,31 +355,15 @@ class SingleProduct {
           const data = await response.json();
 
           if (data.fragments) {
-            // Update cart fragments
-            Object.entries(data.fragments).forEach(([selector, html]) => {
-              const el = document.querySelector(selector);
-              if (el) {
-                el.outerHTML = html;
-              }
-            });
-
-            // Trigger WooCommerce event
-            document.body.dispatchEvent(
-              new CustomEvent('added_to_cart', {
-                detail: {
-                  fragments: data.fragments,
-                  cart_hash: data.cart_hash,
-                  product_id: productId,
-                },
-              })
-            );
-
-            // Show success feedback
-            this.addToCartBtn.classList.add('is-added');
-            setTimeout(() => {
-              this.addToCartBtn.classList.remove('is-added');
-            }, 2000);
+            lastFragments = data.fragments;
+            lastCartHash = data.cart_hash;
           }
+        }
+
+        // Redirect to cart page after adding products
+        if (lastFragments) {
+          const cartUrl = this.addToCartBtn.dataset.cartUrl || '/cart/';
+          window.location.href = cartUrl;
         }
       } catch (error) {
         console.error('Add to cart error:', error);

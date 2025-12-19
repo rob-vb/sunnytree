@@ -27,7 +27,6 @@ define('SUNNYTREE_URI', get_template_directory_uri());
 require_once SUNNYTREE_DIR . '/inc/theme-settings.php';
 require_once SUNNYTREE_DIR . '/inc/template-tags.php';
 require_once SUNNYTREE_DIR . '/inc/category-linked-page.php';
-require_once SUNNYTREE_DIR . '/inc/product-subtitle.php';
 require_once SUNNYTREE_DIR . '/inc/product-filters.php';
 require_once SUNNYTREE_DIR . '/inc/product-attribute-icons.php';
 require_once SUNNYTREE_DIR . '/blocks/index.php';

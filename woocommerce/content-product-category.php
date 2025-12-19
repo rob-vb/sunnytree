@@ -9,8 +9,6 @@
 
 declare(strict_types=1);
 
-use function SunnyTree\ProductSubtitle\get_product_subtitle;
-
 defined('ABSPATH') || exit;
 
 global $product;
@@ -26,8 +24,18 @@ $product_name = $product->get_name();
 $is_on_sale = $product->is_on_sale();
 $is_in_stock = $product->is_in_stock();
 
-// Get product subtitle
-$subtitle = get_product_subtitle($product_id);
+// Get the deepest (most specific) category for this product
+$terms = wc_get_product_terms($product_id, 'product_cat', ['orderby' => 'parent', 'order' => 'DESC']);
+$category = null;
+$max_depth = -1;
+
+foreach ($terms as $term) {
+    $depth = count(get_ancestors($term->term_id, 'product_cat', 'taxonomy'));
+    if ($depth > $max_depth) {
+        $max_depth = $depth;
+        $category = $term;
+    }
+}
 
 // Calculate sale percentage
 $sale_percentage = '';
@@ -65,10 +73,10 @@ $current_price = $product->get_price();
 
         <div class="sunny-product-content-cat">
             <a href="<?php echo esc_url($permalink); ?>" class="sunny-product-title-cat">
-                <?php echo esc_html($product_name); ?>
-                <?php if ($subtitle) : ?>
-                    <span><?php echo esc_html($subtitle); ?></span>
+                <?php if ($category) : ?>
+                    <?php echo esc_html($category->name); ?>
                 <?php endif; ?>
+                <span><?php echo esc_html($product_name); ?></span>
             </a>
 
             <div class="sunny-special-content">
