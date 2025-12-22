@@ -1,150 +1,185 @@
 <footer>
-  	<div class="sunny-pay-footer">
-    	<div class="container">
-      	<div class="sunny-ideal sunny-payment-method">
-      		<img height="46" width="40" class="img-responsive" src="https://sunnytree.nl/Files/10/334000/334323/Protom/3039936/Media/ideal.svg" alt="iDeal logo" title="iDeal logo">
+    <div class="sunny-pay-footer">
+        <div class="container">
+            <div class="sunny-ideal sunny-payment-method">
+                <img height="46" width="40" class="img-responsive"
+                    src="https://sunnytree.nl/Files/10/334000/334323/Protom/3039936/Media/ideal.svg" alt="iDeal logo"
+                    title="iDeal logo">
+            </div>
+            <div class="sunny-paypal sunny-payment-method">
+                <img height="110" width="30" class="img-responsive"
+                    src="https://sunnytree.nl/Files/10/334000/334323/Protom/3039936/Media/PayPal.svg" alt="PayPal logo"
+                    title="PayPal logo">
+            </div>
+            <div class="sunny-visa sunny-payment-method">
+                <img height="84" width="28" class="img-responsive"
+                    src="https://sunnytree.nl/Files/10/334000/334323/Protom/3039936/Media/Visa.svg" alt="Visa logo"
+                    title="Visa logo">
+            </div>
+            <div class="sunny-bancontact sunny-payment-method">
+                <img height="64" width="40" class="img-responsive"
+                    src="https://sunnytree.nl/Files/10/334000/334323/Protom/3039936/Media/Bancontact.svg"
+                    alt="Bancontact logo" title="Bancontact logo">
+            </div>
+            <div class="sunny-mastercard sunny-payment-method">
+                <img height="52" width="40" class="img-responsive"
+                    src="https://sunnytree.nl/Files/10/334000/334323/Protom/3039936/Media/Mastercard.svg"
+                    alt="Mastercard logo" title="Mastercard logo">
+            </div>
+            <div class="sunny-maestro sunny-payment-method">
+                <img height="51" width="40" class="img-responsive"
+                    src="https://sunnytree.nl/Files/10/334000/334323/Protom/3039936/Media/Maestro.svg"
+                    alt="Maestro logo" title="Maestro logo">
+            </div>
+            <div class="sunny-pin sunny-payment-method">
+                <img height="59" width="40" class="img-responsive"
+                    src="https://sunnytree.nl/Files/10/334000/334323/Protom/3039936/Media/Pin.svg" alt="Pin"
+                    title="Pin">
+            </div>
+            <div class="sunny-klarna sunny-payment-method">
+                <img height="26" width="112" class="img-responsive"
+                    src="https://sunnytree.nl/Files/10/334000/334323/Protom/3039936/Media/klarna-t.svg" alt="Klarna"
+                    title="Klarna">
+            </div>
         </div>
-                <div class="sunny-paypal sunny-payment-method">
-        	<img height="110" width="30" class="img-responsive" src="https://sunnytree.nl/Files/10/334000/334323/Protom/3039936/Media/PayPal.svg" alt="PayPal logo" title="PayPal logo">
-        </div>
-        <div class="sunny-visa sunny-payment-method">
-        	<img height="84" width="28" class="img-responsive" src="https://sunnytree.nl/Files/10/334000/334323/Protom/3039936/Media/Visa.svg" alt="Visa logo" title="Visa logo">
-        </div>
-        <div class="sunny-bancontact sunny-payment-method">
-        	<img height="64" width="40" class="img-responsive" src="https://sunnytree.nl/Files/10/334000/334323/Protom/3039936/Media/Bancontact.svg" alt="Bancontact logo" title="Bancontact logo">
-        </div>
-        <div class="sunny-mastercard sunny-payment-method">
-        	<img height="52" width="40" class="img-responsive" src="https://sunnytree.nl/Files/10/334000/334323/Protom/3039936/Media/Mastercard.svg" alt="Mastercard logo" title="Mastercard logo">
-        </div>
-        <div class="sunny-maestro sunny-payment-method">
-        	<img height="51" width="40" class="img-responsive" src="https://sunnytree.nl/Files/10/334000/334323/Protom/3039936/Media/Maestro.svg" alt="Maestro logo" title="Maestro logo">
-        </div>
-        <div class="sunny-pin sunny-payment-method">
-        	<img height="59" width="40" class="img-responsive" src="https://sunnytree.nl/Files/10/334000/334323/Protom/3039936/Media/Pin.svg" alt="Pin" title="Pin">
-        </div>
-        <div class="sunny-klarna sunny-payment-method">
-        	<img height="26" width="112" class="img-responsive" src="https://sunnytree.nl/Files/10/334000/334323/Protom/3039936/Media/klarna-t.svg" alt="Klarna" title="Klarna">
-        </div>
-      </div>
-          </div>
-  	<div class="sunny-offerte-footer">
-    	<div class="container">
-      	<p>Zakelijk project?  Meer weten hoe wij werken voor onze zakelijke klanten? </p>
-        <a href="/Offerte">
-        	<span>Meer info</span>
-          <svg width="20" height="17" viewBox="0 0 20 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M1 9.42589H16.586L11.222 14.7899C10.8315 15.1804 10.8315 15.8136 11.2218 16.2039C11.6123 16.5944 12.2457 16.5944 12.6362 16.2039L19.707 9.13289C19.7535 9.08639 19.795 9.03514 19.8315 8.98064C19.8482 8.95539 19.86 8.92814 19.8745 8.90189C19.891 8.87089 19.91 8.84139 19.9233 8.80864C19.9375 8.77489 19.9455 8.73989 19.9555 8.70489C19.9637 8.67714 19.9745 8.65064 19.9802 8.62214C19.9932 8.55714 20 8.49164 20 8.42589C20 8.42514 19.9998 8.42439 19.9998 8.42364C19.9995 8.35889 19.993 8.29389 19.9802 8.23014C19.9742 8.20014 19.963 8.17239 19.9543 8.14289C19.9445 8.10964 19.937 8.07589 19.9235 8.04364C19.909 8.00889 19.8895 7.97739 19.8715 7.94464C19.858 7.92014 19.8472 7.89514 19.8318 7.87164C19.7952 7.81639 19.7532 7.76489 19.7065 7.71814L12.636 0.647887C12.2455 0.257387 11.6123 0.257387 11.2218 0.647637C10.8313 1.03814 10.8313 1.67139 11.2218 2.06214L16.5858 7.42589H1C0.44775 7.42589 0 7.87364 0 8.42589C0 8.97814 0.44775 9.42589 1 9.42589Z" fill="#95976F"></path>
-          </svg>
-        </a>
-      </div>    
     </div>
-  	<div class="sunny-main-footer">
-    	<div class="container">
-      	<div class="row">
-        	<div class="col-xs-12 col-md-3 col-md-f-1-1">
-          <div class="sunny-footer-col">
-          <div class="sunny-footer-title toggle">
-          <h5>Contact</h5>
-          <svg fill="#000000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px">    <path d="M 7.4296875 9.5 L 5.9296875 11 L 12 17.070312 L 18.070312 11 L 16.570312 9.5 L 12 14.070312 L 7.4296875 9.5 z"></path></svg>
-          </div>
-          <div class="sunny-footer-content">
-          <div class="sunny-f-flex">
-                              Marconistraat 23<br>
-          7575 AR Oldenzaal<p></p>
-            <ul class="col-f-4">
-            	            	<li>
-              	<a href="tel:0031747472201">
-                <svg width="25" height="26" viewBox="0 0 25 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M17.5872 15.9656L14.5396 19.0132L6.41262 10.8863L9.46024 7.83864L4.38087 2.75928L1.33325 5.8069C1.33325 15.9057 9.52017 24.0926 19.619 24.0926L22.6666 21.045L17.5872 15.9656Z" stroke="white" stroke-width="2.66667" stroke-miterlimit="10" stroke-linecap="square"></path>
+    <?php
+    $settings = \SunnyTree\Settings\get_settings();
+    ?>
+    <div class="sunny-offerte-footer">
+        <div class="container">
+            <p><?php echo esc_html($settings['footer_offerte_title']); ?></p>
+            <a href="<?php echo esc_url($settings['footer_offerte_button_url']); ?>">
+                <span><?php echo esc_html($settings['footer_offerte_button_text']); ?></span>
+                <svg width="20" height="17" viewBox="0 0 20 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M1 9.42589H16.586L11.222 14.7899C10.8315 15.1804 10.8315 15.8136 11.2218 16.2039C11.6123 16.5944 12.2457 16.5944 12.6362 16.2039L19.707 9.13289C19.7535 9.08639 19.795 9.03514 19.8315 8.98064C19.8482 8.95539 19.86 8.92814 19.8745 8.90189C19.891 8.87089 19.91 8.84139 19.9233 8.80864C19.9375 8.77489 19.9455 8.73989 19.9555 8.70489C19.9637 8.67714 19.9745 8.65064 19.9802 8.62214C19.9932 8.55714 20 8.49164 20 8.42589C20 8.42514 19.9998 8.42439 19.9998 8.42364C19.9995 8.35889 19.993 8.29389 19.9802 8.23014C19.9742 8.20014 19.963 8.17239 19.9543 8.14289C19.9445 8.10964 19.937 8.07589 19.9235 8.04364C19.909 8.00889 19.8895 7.97739 19.8715 7.94464C19.858 7.92014 19.8472 7.89514 19.8318 7.87164C19.7952 7.81639 19.7532 7.76489 19.7065 7.71814L12.636 0.647887C12.2455 0.257387 11.6123 0.257387 11.2218 0.647637C10.8313 1.03814 10.8313 1.67139 11.2218 2.06214L16.5858 7.42589H1C0.44775 7.42589 0 7.87364 0 8.42589C0 8.97814 0.44775 9.42589 1 9.42589Z"
+                        fill="#95976F"></path>
                 </svg>
-              	<span>074 -7472201</span>
-                </a>
-              </li>
-                                        	<li>
-              	<a href="mailto:info@sunnytree.nl">
-                  <svg width="26" height="18" viewBox="0 0 26 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M13.6272 12.8264C13.4598 12.9902 13.235 13.0819 13.0009 13.0819C12.7664 13.0822 12.5411 12.9904 12.3735 12.8264L9.86447 10.3713L4.22125 15.4701H21.7759L16.1345 10.3729L13.6272 12.8264ZM1.77792 17.253C1.81724 17.2583 1.85707 17.261 1.89717 17.261H24.1045C24.342 17.261 24.5697 17.1667 24.7377 16.9987C24.9056 16.8308 25 16.603 25 16.3656V1.32189C25 1.20093 24.9755 1.08249 24.9293 0.973197C24.8859 0.870544 24.8234 0.775896 24.7439 0.694753C24.5777 0.525027 24.3508 0.428292 24.1133 0.425829C24.0988 0.425679 24.0843 0.425881 24.0698 0.426432H1.93082C1.91637 0.425881 1.90188 0.425679 1.88739 0.425829C1.76976 0.427049 1.65352 0.451426 1.54531 0.497568C1.4371 0.54371 1.33904 0.610714 1.25672 0.694753C1.17441 0.778793 1.10945 0.878223 1.06556 0.987366C1.02167 1.09651 0.999713 1.21323 1.00093 1.33086C1.00103 1.34065 1.0013 1.35043 1.00172 1.3602V16.3099C0.993764 16.4381 1.01347 16.5672 1.06022 16.6882C1.12555 16.8572 1.24061 17.0024 1.39021 17.1046C1.50649 17.1841 1.6394 17.2347 1.77792 17.253ZM2.79263 14.3479L8.58233 9.11675L2.79263 3.45155V14.3479ZM23.209 3.45058V14.3522L17.4167 9.1184L23.209 3.45058ZM21.9077 2.21735L15.6165 8.37339C15.5477 8.41688 15.4849 8.46966 15.4301 8.53037C15.4001 8.56356 15.3728 8.59887 15.3482 8.63598L13.0009 10.9328L4.09311 2.21735H21.9077Z" fill="white"></path>
-                  <path d="M13.0009 13.0819L13.0009 12.9486H13.0008L13.0009 13.0819ZM13.6272 12.8264L13.5339 12.7311L13.5339 12.7311L13.6272 12.8264ZM12.3735 12.8264L12.4668 12.7311L12.4668 12.7311L12.3735 12.8264ZM9.86447 10.3713L9.95772 10.276L9.86811 10.1883L9.77508 10.2724L9.86447 10.3713ZM4.22125 15.4701L4.13186 15.3712L3.8748 15.6034H4.22125V15.4701ZM21.7759 15.4701V15.6034H22.1224L21.8653 15.3712L21.7759 15.4701ZM16.1345 10.3729L16.2239 10.274L16.1309 10.19L16.0413 10.2776L16.1345 10.3729ZM1.77792 17.253L1.79568 17.1209L1.79542 17.1209L1.77792 17.253ZM24.7377 16.9987L24.832 17.093L24.7377 16.9987ZM24.9293 0.973197L24.8064 1.02505L24.8065 1.02512L24.9293 0.973197ZM24.7439 0.694753L24.6487 0.788052V0.788052L24.7439 0.694753ZM24.1133 0.425829L24.1119 0.559156L24.1133 0.425829ZM24.0698 0.426432V0.559863L24.0749 0.559669L24.0698 0.426432ZM1.93082 0.426432L1.92574 0.559766H1.93082V0.426432ZM1.88739 0.425829L1.88601 0.292503L1.88739 0.425829ZM1.54531 0.497568L1.49301 0.374919V0.374919L1.54531 0.497568ZM1.25672 0.694753L1.35198 0.788052L1.25672 0.694753ZM1.06556 0.987366L0.941857 0.937622H0.941857L1.06556 0.987366ZM1.00093 1.33086L0.867606 1.33224L1.00093 1.33086ZM1.00172 1.3602H1.13517L1.13493 1.35445L1.00172 1.3602ZM1.00172 16.3099L1.13505 16.3182V16.3099H1.00172ZM1.06022 16.6882L1.18459 16.6401H1.18459L1.06022 16.6882ZM1.39021 17.1046L1.31497 17.2147L1.31498 17.2147L1.39021 17.1046ZM8.58233 9.11675L8.67172 9.21568L8.77694 9.12062L8.67559 9.02145L8.58233 9.11675ZM2.79263 14.3479H2.6593V14.6481L2.88202 14.4468L2.79263 14.3479ZM2.79263 3.45155L2.88588 3.35625L2.6593 3.13454V3.45155H2.79263ZM23.209 14.3522L23.1196 14.4511L23.3424 14.6524V14.3522H23.209ZM23.209 3.45058H23.3424V3.13357L23.1158 3.35528L23.209 3.45058ZM17.4167 9.1184L17.3234 9.0231L17.2221 9.12227L17.3273 9.21733L17.4167 9.1184ZM15.6165 8.37339L15.6877 8.48612L15.6997 8.47857L15.7098 8.46869L15.6165 8.37339ZM21.9077 2.21735L22.001 2.31264L22.2346 2.08401H21.9077V2.21735ZM15.4301 8.53037L15.3311 8.44101L15.3311 8.44101L15.4301 8.53037ZM15.3482 8.63598L15.4414 8.73128L15.4515 8.72139L15.4593 8.70961L15.3482 8.63598ZM13.0009 10.9328L12.9077 11.0281L13.0009 11.1193L13.0942 11.0281L13.0009 10.9328ZM4.09311 2.21735V2.08401H3.76618L3.99987 2.31265L4.09311 2.21735ZM13.0009 13.2152C13.2699 13.2152 13.5282 13.1098 13.7204 12.9217L13.5339 12.7311C13.3915 12.8705 13.2002 12.9485 13.0009 12.9486L13.0009 13.2152ZM12.2803 12.9217C12.4728 13.1102 12.7316 13.2156 13.0011 13.2152L13.0008 12.9486C12.8012 12.9488 12.6094 12.8707 12.4668 12.7311L12.2803 12.9217ZM9.77122 10.4666L12.2803 12.9217L12.4668 12.7311L9.95772 10.276L9.77122 10.4666ZM4.31064 15.569L9.95386 10.4702L9.77508 10.2724L4.13186 15.3712L4.31064 15.569ZM21.7759 15.3368H4.22125V15.6034H21.7759V15.3368ZM16.0451 10.4719L21.6866 15.569L21.8653 15.3712L16.2239 10.274L16.0451 10.4719ZM13.7204 12.9217L16.2278 10.4682L16.0413 10.2776L13.5339 12.7311L13.7204 12.9217ZM1.89717 17.1277C1.86303 17.1277 1.82913 17.1254 1.79568 17.1209L1.76017 17.3852C1.80534 17.3913 1.8511 17.3943 1.89717 17.3943V17.1277ZM24.1045 17.1277H1.89717V17.3943H24.1045V17.1277ZM24.6434 16.9045C24.5005 17.0474 24.3066 17.1277 24.1045 17.1277V17.3943C24.3773 17.3943 24.639 17.286 24.832 17.093L24.6434 16.9045ZM24.8666 16.3656C24.8666 16.5677 24.7863 16.7615 24.6434 16.9045L24.832 17.093C25.0249 16.9001 25.1333 16.6384 25.1333 16.3656H24.8666ZM24.8666 1.32189V16.3656H25.1333V1.32189H24.8666ZM24.8065 1.02512C24.8458 1.11814 24.8666 1.21894 24.8666 1.32189H25.1333C25.1333 1.18292 25.1052 1.04684 25.0521 0.921277L24.8065 1.02512ZM24.6487 0.788052C24.7163 0.857118 24.7695 0.937671 24.8064 1.02505L25.0521 0.921343C25.0023 0.803417 24.9305 0.694674 24.8392 0.601455L24.6487 0.788052ZM24.1119 0.559156C24.3141 0.561252 24.5072 0.643589 24.6487 0.788052L24.8392 0.601455C24.6482 0.406466 24.3876 0.295333 24.1147 0.292503L24.1119 0.559156ZM24.0749 0.559669C24.0872 0.5592 24.0995 0.559027 24.1119 0.559156L24.1147 0.292503C24.098 0.29233 24.0813 0.292563 24.0647 0.293196L24.0749 0.559669ZM1.93082 0.559766H24.0698V0.293099H1.93082V0.559766ZM1.88877 0.559156C1.90111 0.559028 1.91344 0.559199 1.92574 0.559669L1.9359 0.293196C1.9193 0.292562 1.90266 0.292331 1.88601 0.292503L1.88877 0.559156ZM1.59761 0.620216C1.68971 0.580942 1.78865 0.560194 1.88877 0.559156L1.88601 0.292503C1.75087 0.293904 1.61733 0.321909 1.49301 0.374919L1.59761 0.620216ZM1.35198 0.788052C1.42204 0.71652 1.50551 0.65949 1.59761 0.620216L1.49301 0.374919C1.36869 0.42793 1.25604 0.504907 1.16147 0.601455L1.35198 0.788052ZM1.18927 1.03711C1.22662 0.944214 1.28191 0.859583 1.35198 0.788052L1.16147 0.601455C1.0669 0.698003 0.992278 0.812232 0.941857 0.937622L1.18927 1.03711ZM1.13426 1.32948C1.13322 1.22936 1.15191 1.13001 1.18927 1.03711L0.941857 0.937622C0.891435 1.06301 0.866205 1.1971 0.867606 1.33224L1.13426 1.32948ZM1.13493 1.35445C1.13457 1.34613 1.13434 1.33781 1.13426 1.32948L0.867606 1.33224C0.867723 1.34349 0.868024 1.35472 0.868508 1.36594L1.13493 1.35445ZM1.13505 16.3099V1.3602H0.868384V16.3099H1.13505ZM0.868639 16.3016C0.859502 16.449 0.882139 16.5973 0.935856 16.7362L1.18459 16.6401C1.1448 16.5372 1.12803 16.4273 1.13479 16.3182L0.868639 16.3016ZM0.935856 16.7362C1.01091 16.9304 1.1431 17.0973 1.31497 17.2147L1.46544 16.9946C1.33812 16.9075 1.24019 16.7839 1.18459 16.6401L0.935856 16.7362ZM1.31498 17.2147C1.44858 17.306 1.60127 17.3642 1.76042 17.3852L1.79542 17.1209C1.67752 17.1053 1.56441 17.0622 1.46544 16.9946L1.31498 17.2147ZM8.49295 9.01782L2.70324 14.249L2.88202 14.4468L8.67172 9.21568L8.49295 9.01782ZM2.69938 3.54685L8.48908 9.21205L8.67559 9.02145L2.88588 3.35625L2.69938 3.54685ZM2.92596 14.3479V3.45155H2.6593V14.3479H2.92596ZM23.3424 14.3522V3.45058H23.0757V14.3522H23.3424ZM17.3273 9.21733L23.1196 14.4511L23.2984 14.2533L17.506 9.01947L17.3273 9.21733ZM23.1158 3.35528L17.3234 9.0231L17.5099 9.2137L23.3023 3.54588L23.1158 3.35528ZM15.7098 8.46869L22.001 2.31264L21.8145 2.12205L15.5233 8.27809L15.7098 8.46869ZM15.5291 8.61972C15.5757 8.56806 15.6291 8.52314 15.6877 8.48612L15.5453 8.26066C15.4662 8.31063 15.3941 8.37126 15.3311 8.44101L15.5291 8.61972ZM15.4593 8.70961C15.4803 8.67803 15.5036 8.64797 15.5291 8.61972L15.3311 8.44101C15.2967 8.47914 15.2653 8.51971 15.237 8.56235L15.4593 8.70961ZM13.0942 11.0281L15.4414 8.73128L15.2549 8.54068L12.9077 10.8375L13.0942 11.0281ZM3.99987 2.31265L12.9077 11.0281L13.0942 10.8375L4.18636 2.12204L3.99987 2.31265ZM21.9077 2.08401H4.09311V2.35068H21.9077V2.08401Z" fill="white"></path>
-                  </svg>
-                  <span>info@sunnytree.nl</span>
-                </a>
-              </li>
-							              
-            </ul> 
-            </div>
-             
-          
-          </div>
-          </div>
-          </div>
-          <div class="col-xs-12 col-sm-4 col-md-3 col-f-2">
-            <div class="sunny-footer-col">
-              <div class="sunny-footer-title toggle">
-              	<h5>Menu</h5>
-              	<svg fill="#000000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px">    <path d="M 7.4296875 9.5 L 5.9296875 11 L 12 17.070312 L 18.070312 11 L 16.570312 9.5 L 12 14.070312 L 7.4296875 9.5 z"></path></svg>
-              </div>
-              <div class="sunny-footer-content">
-                <ul>
-                                                      <li><a href="/">Home</a></li>
-                                                      <li><a href="https://sunnytree.nl/algemene-voorwaarden">Algemene voorwaarden</a></li>
-                                                      <li><a href="https://sunnytree.nl/Vragen">Vragen</a></li>
-                                                      <li><a href="https://sunnytree.nl/privacy-policy">Privacy</a></li>
-                                                      <li><a href="https://sunnytree.nl/Offerte">Offerte aanvragen</a></li>
-                                                      <li><a href="https://sunnytree.nl/Verzenden-en-Betalen">Verzenden en Betalen</a></li>
-                                                      <li><a href="https://sunnytree.nl/Retourneren">Retourneren en klachten</a></li>
-                                                      <li><a href="https://sunnytree.nl/Webwinkel-Page-8383029/Account-gegevens.html">Account gegevens</a></li>
-                                                      <li><a href="https://sunnytree.nl/Aankoopregels">Aankoopregels</a></li>
-                                                      <li><a href="https://sunnytree.nl/encyclopedie">Plantencyclopedie</a></li>
-                                                      <li><a href="https://sunnytree.nl/Kennisbank">Kennisbank</a></li>
-                                                      <li><a href="https://sunnytree.nl/verzendproces">Verzendproces</a></li>
-                                  </ul>
-              </div> 
-            </div>
-          </div>
-          <div class="col-xs-12 col-sm-4 col-md-3 col-f-3">
-            <div class="sunny-footer-col">
-              <div class="sunny-footer-title toggle">
-              	<h5>Categorieeën</h5>
-               	<svg fill="#000000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px">    <path d="M 7.4296875 9.5 L 5.9296875 11 L 12 17.070312 L 18.070312 11 L 16.570312 9.5 L 12 14.070312 L 7.4296875 9.5 z"></path></svg>
-              </div>
-              <div class="sunny-footer-content">
-                <ul>
-                                      <li><a href="https://sunnytree.nl/olijfbomen">Olijfboom</a></li>
-                                      <li><a href="https://sunnytree.nl/Palmbomen">Palmboom</a></li>
-                                      <li><a href="https://sunnytree.nl/Citrusbomen-kopen">Citrusboom</a></li>
-                                      <li><a href="https://sunnytree.nl/Vijgenbomen">Vijgenboom</a></li>
-                                      <li><a href="https://sunnytree.nl/druivenboom">Druivenboom</a></li>
-                                      <li><a href="https://sunnytree.nl/Overige-bomen-en-planten">Overige Bomen &amp; Planten</a></li>
-                                      <li><a href="https://sunnytree.nl/Accessoires">Accessoires</a></li>
-                                      <li><a href="https://sunnytree.nl/Verzorging">Verzorging</a></li>
-                                  </ul>
-              </div>
-            </div>  
-          </div>
-          <div class="col-xs-12 col-sm-4 col-md-3 col-f-4 sunny-iframe-wrapper">
-          	<h5>Nieuwsbrief</h5>
-            				<p>Meld je aan voor de nieuwsbrief en blijf op de hoogte van het laatste nieuws en aanbiedingen.</p>
-                    <div id="NewsMailRegistration" data-protonpass-form="">
-                      <input class="NewsMailInputField" id="NewsEmailName" name="NewsEmailName" type="text" placeholder="Je naam" onkeypress="SubscribeToNewsletter(event);">
-                      <input class="NewsMailInputField" id="NewsEmailEmail" name="NewsEmailEmail" type="text" placeholder="E-mailadres" onkeypress="SubscribeToNewsletter(event);">
-                      <span class="sunny-btn" id="sign-up-button" onclick="SubscribeToNewsletter();">
-                        <span>Aanmelden</span>
-                      </span>
-                      <div id="NewsLetterEmailError"></div>
-                    </div>
-          </div>
+            </a>
         </div>
-      </div>   
-    </div> 
-    <div class="sunny-bottom-footer">
-    	<div class="container">
-        <p>Sunnytree | Copyright 2025 - All Rights Reserved</p>
- 				<ul>
-	<li><a href="/algemene-voorwaarden">Algemene voorwaarden</a></li>
-	<li><a href="/privacy-policy">Privacy policy</a></li>
-</ul>
-
-      </div>
     </div>
-  </footer>
-  <div class="deskCheck"></div>
+    <div class="sunny-main-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-3 col-md-f-1-1">
+                    <div class="sunny-footer-col">
+                        <div class="sunny-footer-title toggle">
+                            <h5>Contact</h5>
+                            <svg fill="#000000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px"
+                                height="24px">
+                                <path
+                                    d="M 7.4296875 9.5 L 5.9296875 11 L 12 17.070312 L 18.070312 11 L 16.570312 9.5 L 12 14.070312 L 7.4296875 9.5 z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="sunny-footer-content">
+                            <div class="sunny-f-flex">
+                                Marconistraat 23<br>
+                                7575 AR Oldenzaal<p></p>
+                                <ul class="col-f-4">
+                                    <li>
+                                        <a href="tel:0031747472201">
+                                            <svg width="25" height="26" viewBox="0 0 25 26" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M17.5872 15.9656L14.5396 19.0132L6.41262 10.8863L9.46024 7.83864L4.38087 2.75928L1.33325 5.8069C1.33325 15.9057 9.52017 24.0926 19.619 24.0926L22.6666 21.045L17.5872 15.9656Z"
+                                                    stroke="white" stroke-width="2.66667" stroke-miterlimit="10"
+                                                    stroke-linecap="square"></path>
+                                            </svg>
+                                            <span>074 -7472201</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="mailto:info@sunnytree.nl">
+                                            <svg width="26" height="18" viewBox="0 0 26 18" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M13.6272 12.8264C13.4598 12.9902 13.235 13.0819 13.0009 13.0819C12.7664 13.0822 12.5411 12.9904 12.3735 12.8264L9.86447 10.3713L4.22125 15.4701H21.7759L16.1345 10.3729L13.6272 12.8264ZM1.77792 17.253C1.81724 17.2583 1.85707 17.261 1.89717 17.261H24.1045C24.342 17.261 24.5697 17.1667 24.7377 16.9987C24.9056 16.8308 25 16.603 25 16.3656V1.32189C25 1.20093 24.9755 1.08249 24.9293 0.973197C24.8859 0.870544 24.8234 0.775896 24.7439 0.694753C24.5777 0.525027 24.3508 0.428292 24.1133 0.425829C24.0988 0.425679 24.0843 0.425881 24.0698 0.426432H1.93082C1.91637 0.425881 1.90188 0.425679 1.88739 0.425829C1.76976 0.427049 1.65352 0.451426 1.54531 0.497568C1.4371 0.54371 1.33904 0.610714 1.25672 0.694753C1.17441 0.778793 1.10945 0.878223 1.06556 0.987366C1.02167 1.09651 0.999713 1.21323 1.00093 1.33086C1.00103 1.34065 1.0013 1.35043 1.00172 1.3602V16.3099C0.993764 16.4381 1.01347 16.5672 1.06022 16.6882C1.12555 16.8572 1.24061 17.0024 1.39021 17.1046C1.50649 17.1841 1.6394 17.2347 1.77792 17.253ZM2.79263 14.3479L8.58233 9.11675L2.79263 3.45155V14.3479ZM23.209 3.45058V14.3522L17.4167 9.1184L23.209 3.45058ZM21.9077 2.21735L15.6165 8.37339C15.5477 8.41688 15.4849 8.46966 15.4301 8.53037C15.4001 8.56356 15.3728 8.59887 15.3482 8.63598L13.0009 10.9328L4.09311 2.21735H21.9077Z"
+                                                    fill="white"></path>
+                                                <path
+                                                    d="M13.0009 13.0819L13.0009 12.9486H13.0008L13.0009 13.0819ZM13.6272 12.8264L13.5339 12.7311L13.5339 12.7311L13.6272 12.8264ZM12.3735 12.8264L12.4668 12.7311L12.4668 12.7311L12.3735 12.8264ZM9.86447 10.3713L9.95772 10.276L9.86811 10.1883L9.77508 10.2724L9.86447 10.3713ZM4.22125 15.4701L4.13186 15.3712L3.8748 15.6034H4.22125V15.4701ZM21.7759 15.4701V15.6034H22.1224L21.8653 15.3712L21.7759 15.4701ZM16.1345 10.3729L16.2239 10.274L16.1309 10.19L16.0413 10.2776L16.1345 10.3729ZM1.77792 17.253L1.79568 17.1209L1.79542 17.1209L1.77792 17.253ZM24.7377 16.9987L24.832 17.093L24.7377 16.9987ZM24.9293 0.973197L24.8064 1.02505L24.8065 1.02512L24.9293 0.973197ZM24.7439 0.694753L24.6487 0.788052V0.788052L24.7439 0.694753ZM24.1133 0.425829L24.1119 0.559156L24.1133 0.425829ZM24.0698 0.426432V0.559863L24.0749 0.559669L24.0698 0.426432ZM1.93082 0.426432L1.92574 0.559766H1.93082V0.426432ZM1.88739 0.425829L1.88601 0.292503L1.88739 0.425829ZM1.54531 0.497568L1.49301 0.374919V0.374919L1.54531 0.497568ZM1.25672 0.694753L1.35198 0.788052L1.25672 0.694753ZM1.06556 0.987366L0.941857 0.937622H0.941857L1.06556 0.987366ZM1.00093 1.33086L0.867606 1.33224L1.00093 1.33086ZM1.00172 1.3602H1.13517L1.13493 1.35445L1.00172 1.3602ZM1.00172 16.3099L1.13505 16.3182V16.3099H1.00172ZM1.06022 16.6882L1.18459 16.6401H1.18459L1.06022 16.6882ZM1.39021 17.1046L1.31497 17.2147L1.31498 17.2147L1.39021 17.1046ZM8.58233 9.11675L8.67172 9.21568L8.77694 9.12062L8.67559 9.02145L8.58233 9.11675ZM2.79263 14.3479H2.6593V14.6481L2.88202 14.4468L2.79263 14.3479ZM2.79263 3.45155L2.88588 3.35625L2.6593 3.13454V3.45155H2.79263ZM23.209 14.3522L23.1196 14.4511L23.3424 14.6524V14.3522H23.209ZM23.209 3.45058H23.3424V3.13357L23.1158 3.35528L23.209 3.45058ZM17.4167 9.1184L17.3234 9.0231L17.2221 9.12227L17.3273 9.21733L17.4167 9.1184ZM15.6165 8.37339L15.6877 8.48612L15.6997 8.47857L15.7098 8.46869L15.6165 8.37339ZM21.9077 2.21735L22.001 2.31264L22.2346 2.08401H21.9077V2.21735ZM15.4301 8.53037L15.3311 8.44101L15.3311 8.44101L15.4301 8.53037ZM15.3482 8.63598L15.4414 8.73128L15.4515 8.72139L15.4593 8.70961L15.3482 8.63598ZM13.0009 10.9328L12.9077 11.0281L13.0009 11.1193L13.0942 11.0281L13.0009 10.9328ZM4.09311 2.21735V2.08401H3.76618L3.99987 2.31265L4.09311 2.21735ZM13.0009 13.2152C13.2699 13.2152 13.5282 13.1098 13.7204 12.9217L13.5339 12.7311C13.3915 12.8705 13.2002 12.9485 13.0009 12.9486L13.0009 13.2152ZM12.2803 12.9217C12.4728 13.1102 12.7316 13.2156 13.0011 13.2152L13.0008 12.9486C12.8012 12.9488 12.6094 12.8707 12.4668 12.7311L12.2803 12.9217ZM9.77122 10.4666L12.2803 12.9217L12.4668 12.7311L9.95772 10.276L9.77122 10.4666ZM4.31064 15.569L9.95386 10.4702L9.77508 10.2724L4.13186 15.3712L4.31064 15.569ZM21.7759 15.3368H4.22125V15.6034H21.7759V15.3368ZM16.0451 10.4719L21.6866 15.569L21.8653 15.3712L16.2239 10.274L16.0451 10.4719ZM13.7204 12.9217L16.2278 10.4682L16.0413 10.2776L13.5339 12.7311L13.7204 12.9217ZM1.89717 17.1277C1.86303 17.1277 1.82913 17.1254 1.79568 17.1209L1.76017 17.3852C1.80534 17.3913 1.8511 17.3943 1.89717 17.3943V17.1277ZM24.1045 17.1277H1.89717V17.3943H24.1045V17.1277ZM24.6434 16.9045C24.5005 17.0474 24.3066 17.1277 24.1045 17.1277V17.3943C24.3773 17.3943 24.639 17.286 24.832 17.093L24.6434 16.9045ZM24.8666 16.3656C24.8666 16.5677 24.7863 16.7615 24.6434 16.9045L24.832 17.093C25.0249 16.9001 25.1333 16.6384 25.1333 16.3656H24.8666ZM24.8666 1.32189V16.3656H25.1333V1.32189H24.8666ZM24.8065 1.02512C24.8458 1.11814 24.8666 1.21894 24.8666 1.32189H25.1333C25.1333 1.18292 25.1052 1.04684 25.0521 0.921277L24.8065 1.02512ZM24.6487 0.788052C24.7163 0.857118 24.7695 0.937671 24.8064 1.02505L25.0521 0.921343C25.0023 0.803417 24.9305 0.694674 24.8392 0.601455L24.6487 0.788052ZM24.1119 0.559156C24.3141 0.561252 24.5072 0.643589 24.6487 0.788052L24.8392 0.601455C24.6482 0.406466 24.3876 0.295333 24.1147 0.292503L24.1119 0.559156ZM24.0749 0.559669C24.0872 0.5592 24.0995 0.559027 24.1119 0.559156L24.1147 0.292503C24.098 0.29233 24.0813 0.292563 24.0647 0.293196L24.0749 0.559669ZM1.93082 0.559766H24.0698V0.293099H1.93082V0.559766ZM1.88877 0.559156C1.90111 0.559028 1.91344 0.559199 1.92574 0.559669L1.9359 0.293196C1.9193 0.292562 1.90266 0.292331 1.88601 0.292503L1.88877 0.559156ZM1.59761 0.620216C1.68971 0.580942 1.78865 0.560194 1.88877 0.559156L1.88601 0.292503C1.75087 0.293904 1.61733 0.321909 1.49301 0.374919L1.59761 0.620216ZM1.35198 0.788052C1.42204 0.71652 1.50551 0.65949 1.59761 0.620216L1.49301 0.374919C1.36869 0.42793 1.25604 0.504907 1.16147 0.601455L1.35198 0.788052ZM1.18927 1.03711C1.22662 0.944214 1.28191 0.859583 1.35198 0.788052L1.16147 0.601455C1.0669 0.698003 0.992278 0.812232 0.941857 0.937622L1.18927 1.03711ZM1.13426 1.32948C1.13322 1.22936 1.15191 1.13001 1.18927 1.03711L0.941857 0.937622C0.891435 1.06301 0.866205 1.1971 0.867606 1.33224L1.13426 1.32948ZM1.13493 1.35445C1.13457 1.34613 1.13434 1.33781 1.13426 1.32948L0.867606 1.33224C0.867723 1.34349 0.868024 1.35472 0.868508 1.36594L1.13493 1.35445ZM1.13505 16.3099V1.3602H0.868384V16.3099H1.13505ZM0.868639 16.3016C0.859502 16.449 0.882139 16.5973 0.935856 16.7362L1.18459 16.6401C1.1448 16.5372 1.12803 16.4273 1.13479 16.3182L0.868639 16.3016ZM0.935856 16.7362C1.01091 16.9304 1.1431 17.0973 1.31497 17.2147L1.46544 16.9946C1.33812 16.9075 1.24019 16.7839 1.18459 16.6401L0.935856 16.7362ZM1.31498 17.2147C1.44858 17.306 1.60127 17.3642 1.76042 17.3852L1.79542 17.1209C1.67752 17.1053 1.56441 17.0622 1.46544 16.9946L1.31498 17.2147ZM8.49295 9.01782L2.70324 14.249L2.88202 14.4468L8.67172 9.21568L8.49295 9.01782ZM2.69938 3.54685L8.48908 9.21205L8.67559 9.02145L2.88588 3.35625L2.69938 3.54685ZM2.92596 14.3479V3.45155H2.6593V14.3479H2.92596ZM23.3424 14.3522V3.45058H23.0757V14.3522H23.3424ZM17.3273 9.21733L23.1196 14.4511L23.2984 14.2533L17.506 9.01947L17.3273 9.21733ZM23.1158 3.35528L17.3234 9.0231L17.5099 9.2137L23.3023 3.54588L23.1158 3.35528ZM15.7098 8.46869L22.001 2.31264L21.8145 2.12205L15.5233 8.27809L15.7098 8.46869ZM15.5291 8.61972C15.5757 8.56806 15.6291 8.52314 15.6877 8.48612L15.5453 8.26066C15.4662 8.31063 15.3941 8.37126 15.3311 8.44101L15.5291 8.61972ZM15.4593 8.70961C15.4803 8.67803 15.5036 8.64797 15.5291 8.61972L15.3311 8.44101C15.2967 8.47914 15.2653 8.51971 15.237 8.56235L15.4593 8.70961ZM13.0942 11.0281L15.4414 8.73128L15.2549 8.54068L12.9077 10.8375L13.0942 11.0281ZM3.99987 2.31265L12.9077 11.0281L13.0942 10.8375L4.18636 2.12204L3.99987 2.31265ZM21.9077 2.08401H4.09311V2.35068H21.9077V2.08401Z"
+                                                    fill="white"></path>
+                                            </svg>
+                                            <span>info@sunnytree.nl</span>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-3 col-f-2">
+                    <div class="sunny-footer-col">
+                        <div class="sunny-footer-title toggle">
+                            <h5>Menu</h5>
+                            <svg fill="#000000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px"
+                                height="24px">
+                                <path
+                                    d="M 7.4296875 9.5 L 5.9296875 11 L 12 17.070312 L 18.070312 11 L 16.570312 9.5 L 12 14.070312 L 7.4296875 9.5 z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="sunny-footer-content">
+                            <?php
+                                wp_nav_menu([
+                                    'theme_location' => 'footer-menu',
+                                    'container' => false
+                                ]);
+                            ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-3 col-f-3">
+                    <div class="sunny-footer-col">
+                        <div class="sunny-footer-title toggle">
+                            <h5>Categorieeën</h5>
+                            <svg fill="#000000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px"
+                                height="24px">
+                                <path
+                                    d="M 7.4296875 9.5 L 5.9296875 11 L 12 17.070312 L 18.070312 11 L 16.570312 9.5 L 12 14.070312 L 7.4296875 9.5 z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="sunny-footer-content">
+                            <?php
+                                wp_nav_menu([
+                                    'theme_location' => 'footer-categories',
+                                    'container' => false
+                                ]);
+                            ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 col-md-3 col-f-4 sunny-iframe-wrapper">
+                    <h5>Nieuwsbrief</h5>
+                    <p>Meld je aan voor de nieuwsbrief en blijf op de hoogte van het laatste nieuws en aanbiedingen.</p>
+                    <div id="NewsMailRegistration" data-protonpass-form="">
+                        <input class="NewsMailInputField" id="NewsEmailName" name="NewsEmailName" type="text"
+                            placeholder="Je naam" onkeypress="SubscribeToNewsletter(event);">
+                        <input class="NewsMailInputField" id="NewsEmailEmail" name="NewsEmailEmail" type="text"
+                            placeholder="E-mailadres" onkeypress="SubscribeToNewsletter(event);">
+                        <span class="sunny-btn" id="sign-up-button" onclick="SubscribeToNewsletter();">
+                            <span>Aanmelden</span>
+                        </span>
+                        <div id="NewsLetterEmailError"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sunny-bottom-footer">
+        <div class="container">
+            <p>Sunnytree | Copyright 2025 - All Rights Reserved</p>
+            <ul>
+                <li><a href="/algemene-voorwaarden">Algemene voorwaarden</a></li>
+                <li><a href="/privacy-policy">Privacy policy</a></li>
+            </ul>
+
+        </div>
+    </div>
+</footer>
+<div class="deskCheck"></div>

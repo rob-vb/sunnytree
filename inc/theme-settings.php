@@ -73,9 +73,9 @@ function get_defaults(): array
         ],
         'customer_service_url' => '/klantenservice',
         'customer_service_text' => 'Klantenservice',
-        'reviews_url' => '#reviews',
-        'reviews_count' => 99,
-        'reviews_score' => '5,0',
+        'footer_offerte_title' => 'Zakelijk project? Meer weten hoe wij werken voor onze zakelijke klanten?',
+        'footer_offerte_button_text' => 'Meer info',
+        'footer_offerte_button_url' => '/Offerte',
     ];
 }
 
@@ -161,15 +161,17 @@ function sanitize_settings(array $input): array
     $sanitized['customer_service_text'] = isset($input['customer_service_text'])
         ? sanitize_text_field($input['customer_service_text'])
         : 'Klantenservice';
-    $sanitized['reviews_url'] = isset($input['reviews_url'])
-        ? sanitize_text_field($input['reviews_url'])
+
+    // Sanitize footer offerte settings
+    $sanitized['footer_offerte_title'] = isset($input['footer_offerte_title'])
+        ? sanitize_text_field($input['footer_offerte_title'])
         : '';
-    $sanitized['reviews_count'] = isset($input['reviews_count'])
-        ? absint($input['reviews_count'])
-        : 0;
-    $sanitized['reviews_score'] = isset($input['reviews_score'])
-        ? sanitize_text_field($input['reviews_score'])
-        : '5,0';
+    $sanitized['footer_offerte_button_text'] = isset($input['footer_offerte_button_text'])
+        ? sanitize_text_field($input['footer_offerte_button_text'])
+        : 'Meer info';
+    $sanitized['footer_offerte_button_url'] = isset($input['footer_offerte_button_url'])
+        ? esc_url_raw($input['footer_offerte_button_url'])
+        : '/Offerte';
 
     return $sanitized;
 }
@@ -322,52 +324,50 @@ function render_settings_page(): void
             </div>
 
             <div class="sunnytree-settings__section">
-                <h2><?php esc_html_e('Reviews Badge', 'sunnytree'); ?></h2>
+                <h2><?php esc_html_e('Footer Offerte Section', 'sunnytree'); ?></h2>
+                <p class="description"><?php esc_html_e('Configure the business/offerte call-to-action section in the footer.', 'sunnytree'); ?></p>
 
                 <table class="form-table">
                     <tr>
                         <th scope="row">
-                            <label for="reviews_score"><?php esc_html_e('Score', 'sunnytree'); ?></label>
+                            <label for="footer_offerte_title"><?php esc_html_e('Title Text', 'sunnytree'); ?></label>
                         </th>
                         <td>
                             <input
                                 type="text"
-                                id="reviews_score"
-                                name="sunnytree_settings[reviews_score]"
-                                value="<?php echo esc_attr($settings['reviews_score']); ?>"
-                                class="small-text"
-                                placeholder="5,0"
-                            >
-                            <p class="description"><?php esc_html_e('e.g., 5,0 or 4,8', 'sunnytree'); ?></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <label for="reviews_count"><?php esc_html_e('Number of Reviews', 'sunnytree'); ?></label>
-                        </th>
-                        <td>
-                            <input
-                                type="number"
-                                id="reviews_count"
-                                name="sunnytree_settings[reviews_count]"
-                                value="<?php echo esc_attr($settings['reviews_count']); ?>"
-                                class="small-text"
-                                min="0"
+                                id="footer_offerte_title"
+                                name="sunnytree_settings[footer_offerte_title]"
+                                value="<?php echo esc_attr($settings['footer_offerte_title']); ?>"
+                                class="large-text"
                             >
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">
-                            <label for="reviews_url"><?php esc_html_e('Reviews Page URL', 'sunnytree'); ?></label>
+                            <label for="footer_offerte_button_text"><?php esc_html_e('Button Text', 'sunnytree'); ?></label>
                         </th>
                         <td>
                             <input
                                 type="text"
-                                id="reviews_url"
-                                name="sunnytree_settings[reviews_url]"
-                                value="<?php echo esc_attr($settings['reviews_url']); ?>"
+                                id="footer_offerte_button_text"
+                                name="sunnytree_settings[footer_offerte_button_text]"
+                                value="<?php echo esc_attr($settings['footer_offerte_button_text']); ?>"
                                 class="regular-text"
-                                placeholder="/reviews"
+                            >
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <label for="footer_offerte_button_url"><?php esc_html_e('Button URL', 'sunnytree'); ?></label>
+                        </th>
+                        <td>
+                            <input
+                                type="text"
+                                id="footer_offerte_button_url"
+                                name="sunnytree_settings[footer_offerte_button_url]"
+                                value="<?php echo esc_attr($settings['footer_offerte_button_url']); ?>"
+                                class="regular-text"
+                                placeholder="/Offerte"
                             >
                         </td>
                     </tr>
