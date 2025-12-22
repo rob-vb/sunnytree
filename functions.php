@@ -30,6 +30,7 @@ require_once SUNNYTREE_DIR . '/inc/category-linked-page.php';
 require_once SUNNYTREE_DIR . '/inc/product-filters.php';
 require_once SUNNYTREE_DIR . '/inc/product-attribute-icons.php';
 require_once SUNNYTREE_DIR . '/blocks/index.php';
+require_once SUNNYTREE_DIR . '/inc/class-sunny-mega-walker.php';
 
 /**
  * Theme setup
