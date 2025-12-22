@@ -65,8 +65,9 @@ function setup(): void
 
     // Register navigation menus
     register_nav_menus([
-        'primary' => __('Primary Menu', 'sunnytree'),
-        'footer'  => __('Footer Menu', 'sunnytree'),
+        'sunny-main-menu' => __('Categories', 'sunnytree'),
+        'footer-menu'  => __('Footer Menu', 'sunnytree'),
+        'footer-categories'  => __('Footer Categories', 'sunnytree'),
     ]);
 }
 add_action('after_setup_theme', __NAMESPACE__ . '\setup');
@@ -329,6 +330,24 @@ function custom_breadcrumb_defaults(array $defaults): array
     return $defaults;
 }
 add_filter('woocommerce_breadcrumb_defaults', __NAMESPACE__ . '\custom_breadcrumb_defaults');
+
+/**
+ * Remove "Shop" from breadcrumb trail on search results
+ */
+function remove_shop_from_search_breadcrumb(array $crumbs): array
+{
+    if (is_search()) {
+        foreach ($crumbs as $key => $crumb) {
+            if (isset($crumb[1]) && $crumb[1] === wc_get_page_permalink('shop')) {
+                unset($crumbs[$key]);
+                $crumbs = array_values($crumbs);
+                break;
+            }
+        }
+    }
+    return $crumbs;
+}
+add_filter('woocommerce_get_breadcrumb', __NAMESPACE__ . '\remove_shop_from_search_breadcrumb');
 
 /**
  * Remove the WooCommerce archive header (h1 title) from product archives
