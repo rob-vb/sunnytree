@@ -22,9 +22,14 @@
             </ul>
             <?php endif; ?>
             <div class="sunny-service-links">
-                <a class="sunny-online-link" href="/contact">
-                    <span class="sunny-online open"></span>
-                    <span class="sunny-online-txt">Klantenservice</span>
+                <?php
+                $settings = \SunnyTree\Settings\get_settings();
+                $is_open = \SunnyTree\Settings\is_customer_service_open();
+                $status_class = $is_open ? 'open' : 'closed';
+                ?>
+                <a class="sunny-online-link" href="<?php echo esc_url($settings['customer_service_url']); ?>">
+                    <span class="sunny-online <?php echo esc_attr($status_class); ?>"></span>
+                    <span class="sunny-online-txt"><?php echo esc_html($settings['customer_service_text']); ?></span>
                 </a>
             </div>
             <!-- <div class="sunny-language">
@@ -64,7 +69,7 @@
             <a class="sunny-logo" href="<?php echo esc_url(home_url('/')); ?>">
                 <img height="50" width="194"
                     src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/sunnytree_logo.svg'); ?>"
-                    alt="<?php esc_attr_e('logo Sunny Tree', 'sunnytree'); ?>" title="<?php esc_attr_e('logo Sunny Tree', 'sunnytree'); ?>">
+                    alt="<?php esc_attr_e('logo Sunnytree', 'sunnytree'); ?>" title="<?php esc_attr_e('logo Sunnytree', 'sunnytree'); ?>">
             </a>
             <!-- <a target="_blank" href="https://g.co/kgs/iBvom8k" class="sunny-review">
                 <span class="sunny-r-number">5,0/5</span>

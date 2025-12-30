@@ -1,6 +1,6 @@
 <?php
 /**
- * Sunny Tree Theme Settings
+ * Sunnytree Theme Settings
  *
  * Admin settings page for managing USPs and site options.
  *
@@ -76,6 +76,21 @@ function get_defaults(): array
         'footer_offerte_title' => 'Zakelijk project? Meer weten hoe wij werken voor onze zakelijke klanten?',
         'footer_offerte_button_text' => 'Meer info',
         'footer_offerte_button_url' => '/Offerte',
+        'footer_address_line1' => 'Marconistraat 23',
+        'footer_address_line2' => '7575 AR Oldenzaal',
+        'footer_phone' => '074 -7472201',
+        'footer_phone_link' => '0031747472201',
+        'footer_email' => 'info@sunnytree.nl',
+        'footer_copyright' => 'Sunnytree | Copyright 2025 - All Rights Reserved',
+        'opening_hours' => [
+            'monday' => ['open' => '09:00', 'close' => '17:00', 'enabled' => true],
+            'tuesday' => ['open' => '09:00', 'close' => '17:00', 'enabled' => true],
+            'wednesday' => ['open' => '09:00', 'close' => '17:00', 'enabled' => true],
+            'thursday' => ['open' => '09:00', 'close' => '17:00', 'enabled' => true],
+            'friday' => ['open' => '09:00', 'close' => '17:00', 'enabled' => true],
+            'saturday' => ['open' => '10:00', 'close' => '14:00', 'enabled' => true],
+            'sunday' => ['open' => '', 'close' => '', 'enabled' => false],
+        ],
     ];
 }
 
@@ -96,8 +111,8 @@ function get_settings(): array
 function register_settings_page(): void
 {
     add_theme_page(
-        __('Sunny Tree Settings', 'sunnytree'),
-        __('Sunny Tree Settings', 'sunnytree'),
+        __('Sunnytree Settings', 'sunnytree'),
+        __('Sunnytree Settings', 'sunnytree'),
         'edit_theme_options',
         'sunnytree-settings',
         __NAMESPACE__ . '\render_settings_page'
@@ -172,6 +187,49 @@ function sanitize_settings(array $input): array
     $sanitized['footer_offerte_button_url'] = isset($input['footer_offerte_button_url'])
         ? esc_url_raw($input['footer_offerte_button_url'])
         : '/Offerte';
+
+    // Sanitize footer contact settings
+    $sanitized['footer_address_line1'] = isset($input['footer_address_line1'])
+        ? sanitize_text_field($input['footer_address_line1'])
+        : '';
+    $sanitized['footer_address_line2'] = isset($input['footer_address_line2'])
+        ? sanitize_text_field($input['footer_address_line2'])
+        : '';
+    $sanitized['footer_phone'] = isset($input['footer_phone'])
+        ? sanitize_text_field($input['footer_phone'])
+        : '';
+    $sanitized['footer_phone_link'] = isset($input['footer_phone_link'])
+        ? sanitize_text_field($input['footer_phone_link'])
+        : '';
+    $sanitized['footer_email'] = isset($input['footer_email'])
+        ? sanitize_email($input['footer_email'])
+        : '';
+    $sanitized['footer_copyright'] = isset($input['footer_copyright'])
+        ? sanitize_text_field($input['footer_copyright'])
+        : '';
+
+    // Sanitize opening hours
+    $days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+    $sanitized['opening_hours'] = [];
+
+    if (isset($input['opening_hours']) && is_array($input['opening_hours'])) {
+        foreach ($days as $day) {
+            $sanitized['opening_hours'][$day] = [
+                'open' => isset($input['opening_hours'][$day]['open'])
+                    ? sanitize_text_field($input['opening_hours'][$day]['open'])
+                    : '',
+                'close' => isset($input['opening_hours'][$day]['close'])
+                    ? sanitize_text_field($input['opening_hours'][$day]['close'])
+                    : '',
+                'enabled' => isset($input['opening_hours'][$day]['enabled'])
+                    && $input['opening_hours'][$day]['enabled'] === '1',
+            ];
+        }
+    } else {
+        // Use defaults if not set
+        $defaults = get_defaults();
+        $sanitized['opening_hours'] = $defaults['opening_hours'];
+    }
 
     return $sanitized;
 }
@@ -374,6 +432,166 @@ function render_settings_page(): void
                 </table>
             </div>
 
+            <div class="sunnytree-settings__section">
+                <h2><?php esc_html_e('Footer Contact Information', 'sunnytree'); ?></h2>
+                <p class="description"><?php esc_html_e('Configure the contact details shown in the footer.', 'sunnytree'); ?></p>
+
+                <table class="form-table">
+                    <tr>
+                        <th scope="row">
+                            <label for="footer_address_line1"><?php esc_html_e('Address Line 1', 'sunnytree'); ?></label>
+                        </th>
+                        <td>
+                            <input
+                                type="text"
+                                id="footer_address_line1"
+                                name="sunnytree_settings[footer_address_line1]"
+                                value="<?php echo esc_attr($settings['footer_address_line1']); ?>"
+                                class="regular-text"
+                                placeholder="Marconistraat 23"
+                            >
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <label for="footer_address_line2"><?php esc_html_e('Address Line 2', 'sunnytree'); ?></label>
+                        </th>
+                        <td>
+                            <input
+                                type="text"
+                                id="footer_address_line2"
+                                name="sunnytree_settings[footer_address_line2]"
+                                value="<?php echo esc_attr($settings['footer_address_line2']); ?>"
+                                class="regular-text"
+                                placeholder="7575 AR Oldenzaal"
+                            >
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <label for="footer_phone"><?php esc_html_e('Phone Number (Display)', 'sunnytree'); ?></label>
+                        </th>
+                        <td>
+                            <input
+                                type="text"
+                                id="footer_phone"
+                                name="sunnytree_settings[footer_phone]"
+                                value="<?php echo esc_attr($settings['footer_phone']); ?>"
+                                class="regular-text"
+                                placeholder="074 -7472201"
+                            >
+                            <p class="description"><?php esc_html_e('The phone number as it should be displayed to visitors.', 'sunnytree'); ?></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <label for="footer_phone_link"><?php esc_html_e('Phone Number (Link)', 'sunnytree'); ?></label>
+                        </th>
+                        <td>
+                            <input
+                                type="text"
+                                id="footer_phone_link"
+                                name="sunnytree_settings[footer_phone_link]"
+                                value="<?php echo esc_attr($settings['footer_phone_link']); ?>"
+                                class="regular-text"
+                                placeholder="0031747472201"
+                            >
+                            <p class="description"><?php esc_html_e('Phone number in international format for tel: links (no spaces or hyphens).', 'sunnytree'); ?></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <label for="footer_email"><?php esc_html_e('Email Address', 'sunnytree'); ?></label>
+                        </th>
+                        <td>
+                            <input
+                                type="email"
+                                id="footer_email"
+                                name="sunnytree_settings[footer_email]"
+                                value="<?php echo esc_attr($settings['footer_email']); ?>"
+                                class="regular-text"
+                                placeholder="info@sunnytree.nl"
+                            >
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <label for="footer_copyright"><?php esc_html_e('Copyright Text', 'sunnytree'); ?></label>
+                        </th>
+                        <td>
+                            <input
+                                type="text"
+                                id="footer_copyright"
+                                name="sunnytree_settings[footer_copyright]"
+                                value="<?php echo esc_attr($settings['footer_copyright']); ?>"
+                                class="large-text"
+                                placeholder="Sunnytree | Copyright 2025 - All Rights Reserved"
+                            >
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="sunnytree-settings__section">
+                <h2><?php esc_html_e('Opening Hours', 'sunnytree'); ?></h2>
+                <p class="description"><?php esc_html_e('Configure customer service opening hours. Times should be in 24-hour format (HH:MM).', 'sunnytree'); ?></p>
+
+                <table class="widefat sunnytree-opening-hours-table">
+                    <thead>
+                        <tr>
+                            <th><?php esc_html_e('Day', 'sunnytree'); ?></th>
+                            <th><?php esc_html_e('Open', 'sunnytree'); ?></th>
+                            <th><?php esc_html_e('Close', 'sunnytree'); ?></th>
+                            <th><?php esc_html_e('Enabled', 'sunnytree'); ?></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $days = [
+                            'monday' => __('Monday', 'sunnytree'),
+                            'tuesday' => __('Tuesday', 'sunnytree'),
+                            'wednesday' => __('Wednesday', 'sunnytree'),
+                            'thursday' => __('Thursday', 'sunnytree'),
+                            'friday' => __('Friday', 'sunnytree'),
+                            'saturday' => __('Saturday', 'sunnytree'),
+                            'sunday' => __('Sunday', 'sunnytree'),
+                        ];
+
+                        foreach ($days as $day => $label) :
+                            $hours = $settings['opening_hours'][$day] ?? ['open' => '', 'close' => '', 'enabled' => false];
+                        ?>
+                            <tr>
+                                <td><strong><?php echo esc_html($label); ?></strong></td>
+                                <td>
+                                    <input
+                                        type="time"
+                                        name="sunnytree_settings[opening_hours][<?php echo esc_attr($day); ?>][open]"
+                                        value="<?php echo esc_attr($hours['open']); ?>"
+                                        class="regular-text"
+                                    >
+                                </td>
+                                <td>
+                                    <input
+                                        type="time"
+                                        name="sunnytree_settings[opening_hours][<?php echo esc_attr($day); ?>][close]"
+                                        value="<?php echo esc_attr($hours['close']); ?>"
+                                        class="regular-text"
+                                    >
+                                </td>
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        name="sunnytree_settings[opening_hours][<?php echo esc_attr($day); ?>][enabled]"
+                                        value="1"
+                                        <?php checked($hours['enabled'] ?? false); ?>
+                                    >
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+
             <?php submit_button(); ?>
         </form>
     </div>
@@ -498,6 +716,23 @@ function render_settings_page(): void
             width: 24px;
             height: 24px;
         }
+        .sunnytree-opening-hours-table {
+            margin-top: 15px;
+        }
+        .sunnytree-opening-hours-table th {
+            padding: 10px;
+            background: #f1f1f1;
+            font-weight: 600;
+        }
+        .sunnytree-opening-hours-table td {
+            padding: 10px;
+        }
+        .sunnytree-opening-hours-table input[type="time"] {
+            width: 120px;
+        }
+        .sunnytree-opening-hours-table input[type="checkbox"] {
+            width: auto;
+        }
     </style>
     <?php
 }
@@ -512,3 +747,39 @@ function set_default_options(): void
     }
 }
 add_action('after_switch_theme', __NAMESPACE__ . '\set_default_options');
+
+/**
+ * Check if customer service is currently open
+ *
+ * @return bool True if currently open, false otherwise
+ */
+function is_customer_service_open(): bool
+{
+    $settings = get_settings();
+    $opening_hours = $settings['opening_hours'] ?? [];
+
+    // Get current day and time in Europe/Amsterdam timezone
+    $timezone = new \DateTimeZone('Europe/Amsterdam');
+    $now = new \DateTime('now', $timezone);
+    $current_day = strtolower($now->format('l')); // monday, tuesday, etc.
+    $current_time = $now->format('H:i');
+
+    // Check if we have opening hours for today
+    if (!isset($opening_hours[$current_day])) {
+        return false;
+    }
+
+    $hours = $opening_hours[$current_day];
+
+    // Check if the day is enabled and has valid times
+    if (
+        !($hours['enabled'] ?? false)
+        || empty($hours['open'])
+        || empty($hours['close'])
+    ) {
+        return false;
+    }
+
+    // Compare current time with opening hours
+    return $current_time >= $hours['open'] && $current_time <= $hours['close'];
+}

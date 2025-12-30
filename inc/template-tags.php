@@ -1,6 +1,6 @@
 <?php
 /**
- * Sunny Tree Template Tags
+ * Sunnytree Template Tags
  *
  * Helper functions for template parts.
  *

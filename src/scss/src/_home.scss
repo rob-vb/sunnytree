@@ -1195,11 +1195,6 @@ li.sunny-step-back-sub {
         height: 27px;
         width: 88px
     }
-    header {
-        position: relative;
-        z-index: 2;
-        background: #fff
-    }
     .sunny-menu-desk-bg {
         position: fixed;
         top: 0;
@@ -4656,24 +4651,11 @@ input.form-control:focus,
     z-index: 1
 }
 
-header {
-    z-index: 99
-}
-
 .sunny-main-menu {
     z-index: 80
 }
 
 @media (max-width:991px) {
-    header {
-        position: -webkit-sticky;
-        position: -moz-sticky;
-        position: -ms-sticky;
-        position: -o-sticky;
-        position: sticky;
-        top: 0;
-        z-index: 99
-    }
     header.menu-open {
         top: 0
     }
