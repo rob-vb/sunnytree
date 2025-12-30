@@ -121,22 +121,6 @@ function sanitize_filter_params(array $params): array
         ? array_map('sanitize_text_field', (array) $params['category'])
         : [];
 
-    $sanitized['standplaats'] = isset($params['standplaats'])
-        ? array_map('sanitize_text_field', (array) $params['standplaats'])
-        : [];
-
-    $sanitized['winterhard'] = isset($params['winterhard'])
-        ? array_map('sanitize_text_field', (array) $params['winterhard'])
-        : [];
-
-    $sanitized['hoogte'] = isset($params['hoogte'])
-        ? array_map('sanitize_text_field', (array) $params['hoogte'])
-        : [];
-
-    $sanitized['hoogte_tussen'] = isset($params['hoogte_tussen'])
-        ? array_map('sanitize_text_field', (array) $params['hoogte_tussen'])
-        : [];
-
     $sanitized['orderby'] = isset($params['orderby'])
         ? sanitize_text_field($params['orderby'])
         : 'menu_order';
@@ -144,6 +128,14 @@ function sanitize_filter_params(array $params): array
     $sanitized['current_category'] = isset($params['current_category'])
         ? sanitize_text_field($params['current_category'])
         : '';
+
+    // Dynamic attribute filters - collect all pa_* parameters
+    $sanitized['attributes'] = [];
+    foreach ($params as $key => $value) {
+        if (strpos($key, 'pa_') === 0 && ! empty($value)) {
+            $sanitized['attributes'][$key] = array_map('sanitize_text_field', (array) $value);
+        }
+    }
 
     return $sanitized;
 }
@@ -217,22 +209,17 @@ function build_product_query(array $filters): array
         $args['meta_query'][] = $price_query;
     }
 
-    // Attribute filters
-    $attribute_filters = [
-        'standplaats'   => 'pa_standplaats',
-        'winterhard'    => 'pa_winterhard',
-        'hoogte'        => 'pa_hoogte',
-        'hoogte_tussen' => 'pa_hoogte_tussen',
-    ];
-
-    foreach ($attribute_filters as $param_key => $taxonomy) {
-        if (! empty($filters[$param_key])) {
-            $args['tax_query'][] = [
-                'taxonomy' => $taxonomy,
-                'field'    => 'slug',
-                'terms'    => $filters[$param_key],
-                'operator' => 'IN',
-            ];
+    // Dynamic attribute filters from request
+    if (! empty($filters['attributes'])) {
+        foreach ($filters['attributes'] as $taxonomy => $terms) {
+            if (! empty($terms) && taxonomy_exists($taxonomy)) {
+                $args['tax_query'][] = [
+                    'taxonomy' => $taxonomy,
+                    'field'    => 'slug',
+                    'terms'    => $terms,
+                    'operator' => 'IN',
+                ];
+            }
         }
     }
 
@@ -280,12 +267,42 @@ function build_product_query(array $filters): array
 function get_filter_options(): array
 {
     $options = [
-        'price_range'   => get_price_range(),
-        'categories'    => get_subcategories(),
-        'standplaats'   => get_attribute_terms('pa_standplaats'),
-        'winterhard'    => get_attribute_terms('pa_winterhard'),
-        'hoogte_tussen' => get_attribute_terms('pa_hoogte_tussen'),
+        'categories' => get_subcategories(),
+        'attributes' => [],
     ];
+
+    // Get category context
+    $term_id = null;
+    if (is_product_category()) {
+        $queried_object = get_queried_object();
+        if ($queried_object instanceof \WP_Term) {
+            $term_id = $queried_object->term_id;
+        }
+    }
+
+    // Price filter - always enabled
+    $options['price_range'] = get_price_range();
+
+    // Get enabled attribute filters for this category
+    if ($term_id !== null) {
+        $enabled_filters = \SunnyTree\CategoryFilterSettings\get_enabled_filters($term_id);
+
+        foreach ($enabled_filters as $taxonomy) {
+            $terms = get_attribute_terms($taxonomy);
+            if (! empty($terms)) {
+                // Get the attribute label
+                $attr_name = str_replace('pa_', '', $taxonomy);
+                $attribute = wc_get_attribute(wc_attribute_taxonomy_id_by_name($attr_name));
+                $label = $attribute ? $attribute->name : ucfirst($attr_name);
+
+                $options['attributes'][] = [
+                    'slug'  => $taxonomy,
+                    'name'  => $label,
+                    'terms' => $terms,
+                ];
+            }
+        }
+    }
 
     return apply_filters('sunnytree_filter_options', $options);
 }
