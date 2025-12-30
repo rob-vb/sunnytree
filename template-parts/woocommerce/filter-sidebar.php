@@ -52,43 +52,18 @@ if (is_product_category()) {
                 ?>
             <?php endif; ?>
 
-            <!-- Standplaats -->
-            <?php if (! empty($options['standplaats'])) : ?>
-                <?php
-                get_template_part('template-parts/woocommerce/filter-group', null, [
-                    'title'               => __('Standplaats', 'sunnytree'),
-                    'subtitle'            => __('De beste standplaats is:', 'sunnytree'),
-                    'name'                => 'standplaats',
-                    'items'               => $options['standplaats'],
-                    'show_more_threshold' => 5,
-                ]);
-                ?>
-            <?php endif; ?>
-
-            <!-- Winter Hardy (Winterhard) -->
-            <?php if (! empty($options['winterhard'])) : ?>
-                <?php
-                get_template_part('template-parts/woocommerce/filter-group', null, [
-                    'title'               => __('Winterhard', 'sunnytree'),
-                    'subtitle'            => __('Is de boom winterhard', 'sunnytree'),
-                    'name'                => 'winterhard',
-                    'items'               => $options['winterhard'],
-                    'show_more_threshold' => 5,
-                ]);
-                ?>
-            <?php endif; ?>
-
-            <!-- Hoogte (tussen) -->
-            <?php if (! empty($options['hoogte_tussen'])) : ?>
-                <?php
-                get_template_part('template-parts/woocommerce/filter-group', null, [
-                    'title'               => __('Hoogte (tussen)', 'sunnytree'),
-                    'subtitle'            => __('De hoogte ligt tussen de:', 'sunnytree'),
-                    'name'                => 'hoogte_tussen',
-                    'items'               => $options['hoogte_tussen'],
-                    'show_more_threshold' => 5,
-                ]);
-                ?>
+            <!-- Dynamic Attribute Filters -->
+            <?php if (! empty($options['attributes'])) : ?>
+                <?php foreach ($options['attributes'] as $attribute) : ?>
+                    <?php
+                    get_template_part('template-parts/woocommerce/filter-group', null, [
+                        'title'               => $attribute['name'],
+                        'name'                => $attribute['slug'],
+                        'items'               => $attribute['terms'],
+                        'show_more_threshold' => 5,
+                    ]);
+                    ?>
+                <?php endforeach; ?>
             <?php endif; ?>
 
             <!-- Subcategories -->
