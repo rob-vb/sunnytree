@@ -1,3 +1,68 @@
+/**
+ * WooCommerce Styles - Cart, Checkout & My Account
+ *
+ * @package SunnyTree
+ */
+
+// =============================================================================
+// CSS Variables
+// =============================================================================
+:root {
+  --woocommerce: #ffa50d;
+  --wc-green: #22c55e;
+  --wc-red: #ef4444;
+  --wc-orange: #ffba00;
+  --wc-blue: #2ea2cc;
+  --wc-primary: #ffa50d;
+  --wc-primary-text: #fcfbfe;
+  --wc-secondary: #1A5036;
+  --wc-secondary-text: #515151;
+  --wc-highlight: #958e09;
+  --wc-highligh-text: white;
+  --wc-content-bg: #fff;
+  --wc-subtext: #767676;
+  --wc-form-border-color: #dedede;
+  --wc-form-border-radius: 4px;
+  --wc-form-border-width: 1px;
+
+  --wc-primary-color: #ffa50d;
+  --wc-primary-hover: #ffba0d;
+  --wc-text-color: #333;
+  --wc-text-muted: #666;
+  --wc-form-border-color: #dedede;
+  --wc-border-color: #dedede;
+  --wc-border-color-light: #e0e0e0;
+  --wc-bg-white: #fff;
+  --wc-bg-light: #f9fafb;
+  --wc-error-color: #ef4444;
+  --wc-success-color: #22c55e;
+  --wc-info-color: #3b82f6;
+  --wc-font-heading: 'Poppins', sans-serif;
+  --wc-radius-sm: 4px;
+  --wc-radius-md: 6px;
+  --wc-radius-lg: 8px;
+  --wc-transition: 0.2s ease;
+}
+
+.button-outline {
+  color: var(--wc-primary) !important;
+  background: none !important;
+  border: 1px solid var(--wc-primary) !important;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: rgba(255, 165, 13, 0.15) !important;
+  }
+}
+
+a:not(.button,.wp-element-button):hover {
+  color: var(--wc-primary-hover);
+}
+
+.wp-element-button:hover {
+  color: #fff;
+}
+
 .woocommerce .woocommerce-result-count,
 .woocommerce-page .woocommerce-result-count {
   float: none;
@@ -23,4 +88,70 @@
 
 .page-content__title {
   margin-top: 4.8rem;
+}
+
+.woocommerce-form-login__submit {
+  color: #fff !important;
+  background-color: var(--wc-primary) !important;
+}
+
+.wc-block-components-text-input input,
+.wc-blocks-components-select .wc-blocks-components-select__select {
+  border-color: var(--wc-form-border-color) !important;
+}
+
+:root :where(.wp-element-button, .wp-block-button__link) {
+  background: var(--wc-primary);
+}
+
+h2:has(+ .woocommerce-form-login, + .woocommerce-form-register) {
+  margin-top: 32px;
+}
+
+.woocommerce-form-register__submit {
+  @extend .button-outline;
+}
+
+
+.woocommerce-account:has(.woocommerce-MyAccount-navigation) {
+    padding: 4.8rem 0
+}
+
+@media (min-width: 992px) {
+    .account:has(.woocommerce-MyAccount-navigation) {
+        padding:8rem 0
+    }
+}
+
+.woocommerce-account .woocommerce:has(.woocommerce-MyAccount-navigation) {
+  @media (min-width: 992px) {
+    display: flex;
+    align-items: flex-start;
+  }
+}
+
+.woocommerce-account .woocommerce:has(.woocommerce-MyAccount-navigation) .woocommerce-MyAccount-navigation {
+    background: #f6f5f8;
+}
+
+.woocommerce-account .woocommerce:has(.woocommerce-MyAccount-navigation) .woocommerce-MyAccount-navigation ul {
+    margin: 0;
+    padding: 0.8rem 0;
+    list-style: none
+}
+
+.woocommerce-account .woocommerce:has(.woocommerce-MyAccount-navigation) .woocommerce-MyAccount-navigation ul li a {
+    display: block;
+    padding: 0.8rem 1.6rem;
+    text-decoration: none
+}
+
+.woocommerce-account .woocommerce:has(.woocommerce-MyAccount-navigation) .woocommerce-MyAccount-navigation ul li.is-active a {
+    font-weight: 700;
+    border-left: 2px solid var(--wc-primary)
+}
+
+.woocommerce-account .woocommerce:has(.woocommerce-MyAccount-navigation) .woocommerce-MyAccount-content {
+    flex: 1 0 auto;
+    padding: 2.4rem
 }
